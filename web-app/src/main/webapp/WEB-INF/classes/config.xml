@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="config.xsd">
+    <bdconnection>
+        <driver>com.mysql.jdbc.Driver</driver>
+        <url>jdbc:mysql://localhost:3306/restaraunt_db</url>
+        <login>root</login>
+        <password>guir45gg</password>
+    </bdconnection>
+</config>

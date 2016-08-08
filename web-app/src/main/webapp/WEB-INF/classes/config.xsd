@@ -1,0 +1,24 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:wmh="http://www.wmhelp.com/2003/eGenerator" elementFormDefault="qualified">
+  <xs:element name="config">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="bdconnection"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="bdconnection">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="driver"/>
+        <xs:element ref="url"/>
+        <xs:element ref="login"/>
+        <xs:element ref="password"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="driver" type="xs:string"/>
+  <xs:element name="url" type="xs:string"/>
+  <xs:element name="login" type="xs:string"/>
+  <xs:element name="password" type="xs:string"/>
+</xs:schema>
