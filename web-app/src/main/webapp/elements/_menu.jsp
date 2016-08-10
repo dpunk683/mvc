@@ -9,6 +9,7 @@
 			<c:if test="${(not empty sessionScope.accesslevel) and (sessionScope.accesslevel == '99')}">
 			<tr>
 				<td>
+<<<<<<< Updated upstream
 					<form action="action" method="post">
 						<input type="hidden" name="an" value="watchmenu" />
 						<button type="submit" name="submit" class="button">
@@ -17,6 +18,8 @@
 					</form>
 				</td>
 				<td>
+=======
+>>>>>>> Stashed changes
 					<form>
 						<button type="button" class="button buttonBlue">
 							<fmt:message key="about" />
