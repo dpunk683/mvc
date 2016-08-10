@@ -4,6 +4,6 @@
         <driver>com.mysql.jdbc.Driver</driver>
         <url>jdbc:mysql://localhost:3306/restaraunt_db</url>
         <login>root</login>
-        <password>guir45gg</password>
+        <password>root</password>
     </bdconnection>
 </config>
