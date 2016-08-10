@@ -11,7 +11,7 @@
 				<td>
 <<<<<<< Updated upstream
 					<form action="action" method="post">
-						<input type="hidden" name="an" value="watchmenu" />
+						<input type="hidden" name="an" value="watch menu" />
 						<button type="submit" name="submit" class="button">
 							<fmt:message key="menu.watch" />
 						</button>
