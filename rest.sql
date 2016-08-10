@@ -32,7 +32,6 @@ CREATE TABLE IF NOT EXISTS `clients` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- Дамп данных таблицы restaraunt_db.clients: ~0 rows (приблизительно)
-DELETE FROM `clients`;
 /*!40000 ALTER TABLE `clients` DISABLE KEYS */;
 /*!40000 ALTER TABLE `clients` ENABLE KEYS */;
 
@@ -46,9 +45,8 @@ CREATE TABLE IF NOT EXISTS `ips` (
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 -- Дамп данных таблицы restaraunt_db.ips: ~5 rows (приблизительно)
-DELETE FROM `ips`;
 /*!40000 ALTER TABLE `ips` DISABLE KEYS */;
-INSERT INTO `ips` (`id`, `ip-address`, `TableId`) VALUES
+REPLACE INTO `ips` (`id`, `ip-address`, `TableId`) VALUES
 	(1, '10.1.1.5', 5),
 	(2, '10.1.1.55', 3),
 	(3, '10.1.1.89', 7),
@@ -69,9 +67,8 @@ CREATE TABLE IF NOT EXISTS `menu` (
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 -- Дамп данных таблицы restaraunt_db.menu: ~3 rows (приблизительно)
-DELETE FROM `menu`;
 /*!40000 ALTER TABLE `menu` DISABLE KEYS */;
-INSERT INTO `menu` (`id`, `name`, `price`, `secondPrice`, `about`, `picture`) VALUES
+REPLACE INTO `menu` (`id`, `name`, `price`, `secondPrice`, `about`, `picture`) VALUES
 	(1, 'Яичница глазунья', 15000, 10000, NULL, 'jaichnica-glazunja.jpg'),
 	(3, 'Жопа с ушами', 45000, NULL, '', 'no_photo.jpg'),
 	(4, '50 gramms of Cognac', 25000, 0, 'Высококачественный коньяк неизвестного происхождения. Скорее всего кондитерский, тайно вынесенный с ближайшего завода. В нем могут чуствоваться нотки хлорки, бережно добавленные туда поставщиками при разведении его водопроводной водой.', 'сognac.jpg');
@@ -93,9 +90,8 @@ CREATE TABLE IF NOT EXISTS `rcpbody` (
 ) ENGINE=InnoDB AUTO_INCREMENT=64 DEFAULT CHARSET=utf8;
 
 -- Дамп данных таблицы restaraunt_db.rcpbody: ~2 rows (приблизительно)
-DELETE FROM `rcpbody`;
 /*!40000 ALTER TABLE `rcpbody` DISABLE KEYS */;
-INSERT INTO `rcpbody` (`id`, `productNo`, `price`, `starttime`, `remote_ip_id`, `status`) VALUES
+REPLACE INTO `rcpbody` (`id`, `productNo`, `price`, `starttime`, `remote_ip_id`, `status`) VALUES
 	(62, 4, 25000, '20160608_121210', 4, 0),
 	(63, 1, 10000, '20160803_205323', 4, 0);
 /*!40000 ALTER TABLE `rcpbody` ENABLE KEYS */;
@@ -122,7 +118,6 @@ CREATE TABLE IF NOT EXISTS `rcpheaders` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- Дамп данных таблицы restaraunt_db.rcpheaders: ~0 rows (приблизительно)
-DELETE FROM `rcpheaders`;
 /*!40000 ALTER TABLE `rcpheaders` DISABLE KEYS */;
 /*!40000 ALTER TABLE `rcpheaders` ENABLE KEYS */;
 
@@ -138,7 +133,6 @@ CREATE TABLE IF NOT EXISTS `registrations` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- Дамп данных таблицы restaraunt_db.registrations: ~0 rows (приблизительно)
-DELETE FROM `registrations`;
 /*!40000 ALTER TABLE `registrations` DISABLE KEYS */;
 /*!40000 ALTER TABLE `registrations` ENABLE KEYS */;
 
@@ -155,9 +149,8 @@ CREATE TABLE IF NOT EXISTS `waiters` (
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- Дамп данных таблицы restaraunt_db.waiters: ~3 rows (приблизительно)
-DELETE FROM `waiters`;
 /*!40000 ALTER TABLE `waiters` DISABLE KEYS */;
-INSERT INTO `waiters` (`id`, `login`, `name`, `type`, `pass`, `cardNum`) VALUES
+REPLACE INTO `waiters` (`id`, `login`, `name`, `type`, `pass`, `cardNum`) VALUES
 	(1, 'manager', 'My Lord', 1, 'c4ca4238a0b923820dcc509a6f75849b', NULL),
 	(2, 'waiter', 'Халдей', 2, 'c4ca4238a0b923820dcc509a6f75849b', NULL),
 	(3, 'chief', 'ПОВАР', 3, 'c4ca4238a0b923820dcc509a6f75849b', NULL);
@@ -181,7 +174,6 @@ CREATE TABLE IF NOT EXISTS `zreports` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- Дамп данных таблицы restaraunt_db.zreports: ~0 rows (приблизительно)
-DELETE FROM `zreports`;
 /*!40000 ALTER TABLE `zreports` DISABLE KEYS */;
 /*!40000 ALTER TABLE `zreports` ENABLE KEYS */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
