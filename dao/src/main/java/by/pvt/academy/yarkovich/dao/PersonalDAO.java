@@ -49,10 +49,10 @@ public class PersonalDAO extends DAO {
 
     public Personal getWaiter(String login, String password) throws SQLException {
     	Personal personal = null;
-        PreparedStatement ps = null;
         String pass = PassCoder.getHashCode(password);
         String query =  sqlManager.getProperty(SQLReqManager.SQL_GET_WAITER);
-        ps = poolInstance.getConnection().prepareStatement(query);
+        Connection connection = poolInstance.getConnection();
+        PreparedStatement ps = connection.prepareStatement(query);
         ps.setString(1,login);
         ps.setString(2,pass);
         ResultSet result = ps.executeQuery();
@@ -65,6 +65,7 @@ public class PersonalDAO extends DAO {
         	personal.setPass(result.getString(COLUMN_NAME_PASS));
         	personal.setCardNum(result.getString(COLUMN_NAME_CARDNUM));
         }
+        poolInstance.freeConnection(connection);
         return personal;
     }
     
