@@ -15,7 +15,7 @@ public class SQLReqManager {
 		public static final String SQL_GET_CLIENTS = "SQL_GET_CLIENTS";
 		public static final String SQL_ADD_WAITER = "SQL_ADD_USER";
 		public static final String SQL_GET_WAITER = "SQL_GET_WAITER";
-		public static final String SQL_GET_USER_BY_UID = null;
+		public static final String SQL_GET_USER_BY_UID = "SQL_GET_USER_BY_UID";
 		public static final String SQL_CHECK_LOGIN = null;
 		public static final String SQL_GET_DAYDISH = "SQL_GET_DAYDISH";
 		public static final String SQL_GET_MENU = "SQL_GET_MENU";

@@ -17,19 +17,19 @@ public class PersonalDaoTest
     {
         Personal personal = PersonalDAO.getInstance().getWaiter(1);
 
-        Assert.assertEquals("1", personal.getId());
-        Assert.assertEquals("manager", personal.getName());
-        Assert.assertEquals("1", personal.getType());
+        Assert.assertEquals(1, personal.getId());
+        Assert.assertEquals("manager", personal.getLogin());
+        Assert.assertEquals(1, personal.getType());
         return;
     }
 
-    public void testFindByEmail() throws SQLException
+    public void testgetWaiter2() throws SQLException
     {
-        Personal personal = PersonalDAO.getInstance().getWaiter("waiter","c4ca4238a0b923820dcc509a6f75849b");
+        Personal personal = PersonalDAO.getInstance().getWaiter("waiter","1");
 
-        Assert.assertEquals("2", personal.getId());
-        Assert.assertEquals("waiter", personal.getName());
-        Assert.assertEquals("2", personal.getType());
+        Assert.assertEquals(2, personal.getId());
+        Assert.assertEquals("waiter", personal.getLogin());
+        Assert.assertEquals(2, personal.getType());
         return;
     }
 }
