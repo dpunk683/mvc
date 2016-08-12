@@ -19,7 +19,7 @@ import by.pvt.academy.yarkovich.constants.PageNames;
 import by.pvt.academy.yarkovich.managers.MessageManager;
 
 /**
- * Отслеживает, есть ли у пользователя права доступа к некоторым страницам.
+ *
  * 
  * Tracks if user has rights to access certain pages.
  * 
