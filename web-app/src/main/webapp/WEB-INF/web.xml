@@ -6,7 +6,7 @@
 	<display-name>Restaraunt_web</display-name>
     <servlet>
   <servlet-name>FrontController</servlet-name>
-       <servlet-class>by.pvt.academy.yarkovich.controller.FrontController</servlet-class>
+       <servlet-class>controller.FrontController</servlet-class>
        <load-on-startup>1</load-on-startup>
    </servlet>
    <servlet>
@@ -79,15 +79,15 @@
    </servlet-mapping>
     <filter>
        <filter-name>ConfigFilter</filter-name>
-       <filter-class>by.pvt.academy.yarkovich.filters.ConfigFilter</filter-class>
+       <filter-class>filters.ConfigFilter</filter-class>
    </filter>
    <filter>
        <filter-name>WaiterFilter</filter-name>
-       <filter-class>by.pvt.academy.yarkovich.filters.WaiterAccessFilter</filter-class>
+       <filter-class>filters.WaiterAccessFilter</filter-class>
    </filter>
    <!--<filter>-->
        <!--<filter-name>AdminAccessFilter</filter-name>-->
-       <!--<filter-class>by.pvt.academy.yarkovich.filters.AdminAccessFilter</filter-class>-->
+       <!--<filter-class>filters.AdminAccessFilter</filter-class>-->
    <!--</filter>-->
    <filter-mapping>
        <filter-name>ConfigFilter</filter-name>

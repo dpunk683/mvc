@@ -7,8 +7,8 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 
+import by.pvt.academy.yarkovich.constants.SQLRequests;
 import by.pvt.academy.yarkovich.entity.Receipt;
-import by.pvt.academy.yarkovich.managers.SQLReqManager;
 
 public class ReceiptDAO extends DAO {
 	private static ReceiptDAO instance;
@@ -26,7 +26,7 @@ public class ReceiptDAO extends DAO {
 		String currTime = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
 		try {
 			connection = poolInstance.getConnection();
-			String query = sqlManager.getProperty(SQLReqManager.SQL_ADD_RECEIPT_TO_BASE);
+			String query = SQLRequests.SQL_ADD_RECEIPT_TO_BASE;
 			ps = poolInstance.getConnection().prepareStatement(query);
 			ps.setDouble(1, receipt.getSum());
 			ps.setString(2, currTime);

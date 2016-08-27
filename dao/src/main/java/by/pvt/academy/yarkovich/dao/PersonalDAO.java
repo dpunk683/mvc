@@ -4,10 +4,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 
+import by.pvt.academy.yarkovich.constants.SQLRequests;
 import by.pvt.academy.yarkovich.entity.Personal;
-import by.pvt.academy.yarkovich.managers.SQLReqManager;
 import by.pvt.academy.yarkovich.utils.PassCoder;
 
 public class PersonalDAO extends DAO {
@@ -32,25 +31,25 @@ public class PersonalDAO extends DAO {
         return instance;
     }
 
-    public void register(Personal personal) throws SQLException {
-        Connection connection = poolInstance.getConnection();
-        String query = sqlManager.getProperty(SQLReqManager.SQL_ADD_WAITER);
-        PreparedStatement ps = connection.prepareStatement(query);
-
-        ps.setString(1, personal.getName());
-        ps.setString(2, personal.getLogin());
-        ps.setInt(3, personal.getType());
-        ps.setString(4, PassCoder.getHashCode(personal.getPass()));
-        ps.setString(4, personal.getCardNum());
-        ps.executeUpdate();
-            
-        poolInstance.freeConnection(connection);
-    }
+//    public void register(Personal personal) throws SQLException {
+//        Connection connection = poolInstance.getConnection();
+//        String query = SQLRequests.SQL_ADD_WAITER;
+//        PreparedStatement ps = connection.prepareStatement(query);
+//
+//        ps.setString(1, personal.getName());
+//        ps.setString(2, personal.getLogin());
+//        ps.setInt(3, personal.getType());
+//        ps.setString(4, PassCoder.getHashCode(personal.getPass()));
+//        ps.setString(4, personal.getCardNum());
+//        ps.executeUpdate();
+//
+//        poolInstance.freeConnection(connection);
+//    }
 
     public Personal getWaiter(String login, String password) throws SQLException {
     	Personal personal = null;
         String pass = PassCoder.getHashCode(password);
-        String query =  sqlManager.getProperty(SQLReqManager.SQL_GET_WAITER);
+        String query =  SQLRequests.SQL_GET_WAITER;
         Connection connection = poolInstance.getConnection();
         PreparedStatement ps = connection.prepareStatement(query);
         ps.setString(1,login);
@@ -75,7 +74,7 @@ public class PersonalDAO extends DAO {
     public Personal getWaiter(int id) throws SQLException {
     	Personal personal = null;
         PreparedStatement ps = null;
-        String query =  sqlManager.getProperty(SQLReqManager.SQL_GET_USER_BY_UID);
+        String query =  SQLRequests.SQL_GET_USER_BY_UID;
         ps = poolInstance.getConnection().prepareStatement(query);
         ps.setInt(1, id);
         ResultSet result = ps.executeQuery();
@@ -94,18 +93,18 @@ public class PersonalDAO extends DAO {
     /**
      * implements #SQL_CHECK_LOGIN
      */
-    public boolean checkLogin(String login) throws SQLException {
-        PreparedStatement ps = null;
-        String query =  sqlManager.getProperty(SQLReqManager.SQL_CHECK_LOGIN);
-        ps = poolInstance.getConnection().prepareStatement(query);
-        ps.setString(1, login);
-        ResultSet result = ps.executeQuery();
-        if(result.next()) {
-            return false;
-        }
-        
-        return true;
-    }
+//    public boolean checkLogin(String login) throws SQLException {
+//        PreparedStatement ps = null;
+//        String query =  SQLRequests.SQL_CHECK_LOGIN;
+//        ps = poolInstance.getConnection().prepareStatement(query);
+//        ps.setString(1, login);
+//        ResultSet result = ps.executeQuery();
+//        if(result.next()) {
+//            return false;
+//        }
+//
+//        return true;
+//    }
     
 //    /**
 //     * implements #SQL_GET_ACCESS_LEVEL

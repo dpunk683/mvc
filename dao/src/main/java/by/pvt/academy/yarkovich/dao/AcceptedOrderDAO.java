@@ -10,8 +10,8 @@ import java.util.Calendar;
 import java.util.ArrayList;
 import java.util.List;
 
+import by.pvt.academy.yarkovich.constants.SQLRequests;
 import by.pvt.academy.yarkovich.entity.AcceptedOrder;
-import by.pvt.academy.yarkovich.managers.SQLReqManager;
 
 public class AcceptedOrderDAO extends DAO {
 
@@ -49,7 +49,7 @@ public class AcceptedOrderDAO extends DAO {
 		String currTime = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
 		try {
 			connection = poolInstance.getConnection();
-			String query = sqlManager.getProperty(SQLReqManager.SQL_ADD_ORDER_TO_BASE);
+			String query = SQLRequests.SQL_ADD_ORDER_TO_BASE;
 			ps = poolInstance.getConnection().prepareStatement(query);
 			ps.setInt(1, acceptedOrder.getProductNo());
 			ps.setDouble(2, acceptedOrder.getPrice());
@@ -70,7 +70,7 @@ public class AcceptedOrderDAO extends DAO {
 		Connection connection = null;
 		try {
 			connection = poolInstance.getConnection();
-			String query = sqlManager.getProperty(SQLReqManager.SQL_QUERY_GET_ORDERS);
+			String query = SQLRequests.SQL_QUERY_GET_ORDERS;
 			statement = connection.createStatement();
 			resultSet = statement.executeQuery(query);
 			acc_orders = initAcceptedOrders(resultSet);

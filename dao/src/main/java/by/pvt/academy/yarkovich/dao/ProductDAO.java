@@ -8,8 +8,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import by.pvt.academy.yarkovich.constants.SQLRequests;
 import by.pvt.academy.yarkovich.entity.Product;
-import by.pvt.academy.yarkovich.managers.SQLReqManager;
 
 public class ProductDAO extends DAO {
 	private static ProductDAO instance;
@@ -57,7 +57,7 @@ public class ProductDAO extends DAO {
 		Connection connection = null;
 		try {
 			connection = poolInstance.getConnection();
-			String query = sqlManager.getProperty(SQLReqManager.SQL_GET_DAYDISH);
+			String query = SQLRequests.SQL_GET_DAYDISH;
 			statement = connection.createStatement();
 			resultSet = statement.executeQuery(query);
 			products = initProducts(resultSet);
@@ -75,7 +75,7 @@ public class ProductDAO extends DAO {
 		Connection connection = null;
 		try {
 			connection = poolInstance.getConnection();
-			String query = sqlManager.getProperty(SQLReqManager.SQL_GET_MENU);
+			String query = SQLRequests.SQL_GET_MENU;
 			statement = connection.createStatement();
 			resultSet = statement.executeQuery(query);
 			products = initProducts(resultSet);
@@ -91,7 +91,7 @@ public class ProductDAO extends DAO {
 		PreparedStatement ps = null;
 		Connection connection = null;
 			connection = poolInstance.getConnection();
-			String query = sqlManager.getProperty(SQLReqManager.SQL_GET_PRODUCTBYID);
+			String query = SQLRequests.SQL_GET_PRODUCTBYID;
 			ps = poolInstance.getConnection().prepareStatement(query);
 	        ps.setInt(1,id);
 	        ResultSet result = ps.executeQuery();
