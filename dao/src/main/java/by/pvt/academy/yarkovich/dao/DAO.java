@@ -1,26 +1,19 @@
 package by.pvt.academy.yarkovich.dao;
 
-import by.pvt.academy.yarkovich.connection.DBConnectionPool;
+import by.pvt.academy.yarkovich.exceptions.DAOException;
 
-public abstract class DAO {
-    protected static DBConnectionPool poolInstance;
+import java.io.Serializable;
 
-    protected DAO() {
-        poolInstance = DBConnectionPool.getInstance();
-    }
+public interface DAO<T> {
+    void saveOrUpdate(T t) throws DAOException;
 
-    void add() {
-    }
+    T get(Serializable id) throws DAOException;
 
-    ;
+    T load(Serializable id) throws DAOException;
 
-    void getById() {
-    }
-
-    ;
-
-    void getAll() {
-    }
-
-    ;
+    void delete(T t) throws DAOException;
 }
+
+
+
+

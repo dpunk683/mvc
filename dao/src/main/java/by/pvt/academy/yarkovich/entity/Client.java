@@ -1,13 +1,32 @@
 package by.pvt.academy.yarkovich.entity;
 
-public class Client {
+import javax.persistence.*;
+import javax.validation.constraints.Size;
+import java.io.Serializable;
+import java.util.List;
+
+@Entity
+@Table (name="clients")
+public class Client extends PersistentObject implements Serializable  {
+    private static final long serialVersionUID = 2L;
+
+	@Column
 	private String name;
+	@Column
 	private String dateOfBirth;
+	@Column
 	private String phone;
+	@Column
 	private String email;
+	@Column
 	private String loyalityCardNo;
+	@Column
 	private String oldLoyalityCardNo;
+	@Column
 	private double spentMoney;
+	@OneToMany(mappedBy = "clients", cascade = CascadeType.ALL)
+	private List <AcceptedOrder> acceptedOrderSet;
+
 
 	public String getName() {
 		return name;

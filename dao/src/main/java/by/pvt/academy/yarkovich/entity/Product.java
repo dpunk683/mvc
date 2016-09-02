@@ -1,23 +1,31 @@
 package by.pvt.academy.yarkovich.entity;
 
-public class Product {
-	private int id;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import java.io.Serializable;
+
+@Entity
+@Table(name = "products")
+public class Product extends PersistentObject implements Serializable {
+	private static final long serialVersionUID = 5L;
+	@Column
 	private String name;
+	@Column
 	private double price;
+	@Column
 	private double secondPrice;
+	@Column
 	private String about;
+	@Column
 	private String picture;
-	public int getId() {
-		return id;
-	}
+
 	public String getPicture() {
 		return picture;
 	}
 	public void setPicture(String picture) {
 		this.picture = picture;
-	}
-	public void setId(int id) {
-		this.id = id;
 	}
 	public String getAbout() {
 		return about;
@@ -50,7 +58,6 @@ public class Product {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((about == null) ? 0 : about.hashCode());
-		result = prime * result + id;
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result + ((picture == null) ? 0 : picture.hashCode());
 		long temp;
@@ -74,8 +81,6 @@ public class Product {
 				return false;
 		} else if (!about.equals(other.about))
 			return false;
-		if (id != other.id)
-			return false;
 		if (name == null) {
 			if (other.name != null)
 				return false;
@@ -94,7 +99,7 @@ public class Product {
 	}
 	@Override
 	public String toString() {
-		return "Product [id=" + id + ", name=" + name + ", price=" + price + ", secondPrice=" + secondPrice + ", about="
+		return "Product [name=" + name + ", price=" + price + ", secondPrice=" + secondPrice + ", about="
 				+ about + ", picture=" + picture + "]";
 	}
 	public Product() {

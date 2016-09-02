@@ -11,7 +11,7 @@ import java.util.List;
 import by.pvt.academy.yarkovich.constants.SQLRequests;
 import by.pvt.academy.yarkovich.entity.Product;
 
-public class ProductDAO extends DAO {
+public class ProductDAO extends BaseDao {
 	private static ProductDAO instance;
 	
 	private final String COLUMN_NAME_ID = "id";

@@ -1,5 +1,6 @@
 package  by.pvt.academy.yarkovich.dao;
 
+import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -7,9 +8,10 @@ import java.sql.SQLException;
 
 import by.pvt.academy.yarkovich.constants.SQLRequests;
 import by.pvt.academy.yarkovich.entity.Personal;
+import by.pvt.academy.yarkovich.exceptions.DAOException;
 import by.pvt.academy.yarkovich.utils.PassCoder;
 
-public class PersonalDAO extends DAO {
+public class PersonalDAO extends BaseDao {
     
     private static PersonalDAO instance;
     

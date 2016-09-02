@@ -13,7 +13,7 @@ import java.util.List;
 import by.pvt.academy.yarkovich.constants.SQLRequests;
 import by.pvt.academy.yarkovich.entity.AcceptedOrder;
 
-public class AcceptedOrderDAO extends DAO {
+public class AcceptedOrderDAO extends BaseDao {
 
 	private static AcceptedOrderDAO instance;
 
@@ -30,7 +30,7 @@ public class AcceptedOrderDAO extends DAO {
         	//Order statuses: 0-new, 1- on kitchen,2-ready to serve, 3-closed, 99-canceled
         	if (resultSet.getInt(6)>2){continue;}
         	AcceptedOrder acc_order = new AcceptedOrder();
-        	acc_order.setId(resultSet.getInt(1));
+        	acc_order.setId((long) resultSet.getInt(1));
         	acc_order.setProductNo(resultSet.getInt(2));
         	acc_order.setPrice(resultSet.getDouble(3));
         	acc_order.setStarttime(resultSet.getString(4));

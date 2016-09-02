@@ -1,8 +1,6 @@
 var isHide = false;
 $(document).ready(function () {
-    function showDiv();
-
-});
+    });
 function showDiv() {
 
     $(".js-show-some").click(function (e) {
