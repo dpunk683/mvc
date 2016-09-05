@@ -6,14 +6,16 @@ import javax.servlet.http.HttpServletRequest;
 
 import actions.Action;
 import actions.clients.ViewAllClientsAction;
+import actions.employee.NewEmployeeAddAction;
+import actions.employee.NewEmployeeFormAction;
 import actions.lang.SetLangAction;
 import actions.order.AddToOrderAction;
 import actions.order.ConfirmOrderAction;
 import actions.order.GetOrderAction;
-import actions.order.PersonalViewOrdersAction;
+import actions.order.EmployeeViewOrdersAction;
 import actions.order.RemoveFromOrderAction;
-import actions.personal.PersonalLoginAction;
-import actions.personal.PersonalLogoutAction;
+import actions.employee.EmployeeLoginAction;
+import actions.employee.EmployeeLogoutAction;
 import actions.products.GetDishOfTheDayAction;
 import actions.products.GetNewMenuAction;
 
@@ -32,6 +34,8 @@ public class ActionContainer {
 	private final String ACTION_CONFIRM_ORDER = "confirmorder";
 	private final String ACTION_PESR_VIEW_ORDER = "vieworders";
 	private final String ACTION_REMOVE_FROM_ACCORDER = "removefromaccorder";
+	private final String ACTION_ADD_EMPLOYEE = "addemployee";
+	private final String ACTION_NEW_EMPLOYEE_OPEN_FORM = "newemployee";
 	private static ActionContainer instance;
 	private HashMap<String, Action> container;
 
@@ -39,8 +43,8 @@ public class ActionContainer {
 		if (container == null) {
 			container = new HashMap<String, Action>();
 			container.put(ACTION_VIEW_CLIENTS, new ViewAllClientsAction());
-			container.put(ACTION_LOGIN, new PersonalLoginAction());
-			container.put(ACTION_LOGOUT, new PersonalLogoutAction());
+			container.put(ACTION_LOGIN, new EmployeeLoginAction());
+			container.put(ACTION_LOGOUT, new EmployeeLogoutAction());
 			container.put(ACTION_GETDAYDISH, new GetDishOfTheDayAction());
 			container.put(ACTION_WATCH_MENU, new GetNewMenuAction());
 			container.put(ACTION_SET_LANG, new SetLangAction());
@@ -48,7 +52,10 @@ public class ActionContainer {
 			container.put(ACTION_GETORDER, new GetOrderAction());
 			container.put(ACTION_REMOVE_FROM_ORDER, new RemoveFromOrderAction());
 			container.put(ACTION_CONFIRM_ORDER, new ConfirmOrderAction());
-			container.put(ACTION_PESR_VIEW_ORDER, new PersonalViewOrdersAction());
+			container.put(ACTION_PESR_VIEW_ORDER, new EmployeeViewOrdersAction());
+			container.put(ACTION_NEW_EMPLOYEE_OPEN_FORM, new NewEmployeeFormAction());
+			container.put(ACTION_ADD_EMPLOYEE, new NewEmployeeAddAction());
+			//container.put(ACTION_ADD_EMPLOYEE, new AddNewEmployeeAction());
 		}
 	}
 

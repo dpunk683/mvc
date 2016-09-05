@@ -4,13 +4,16 @@
 <hibernate-configuration>
     <session-factory>
         <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/restaraunt_db</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/restraunt_db_hiber</property>
         <property name="hibernate.connection.username">root</property>
         <property name="hibernate.connection.password">guir45gg</property>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
         <property name="hibernate.connection.pool_size">10</property>
         <property name="show_sql">true</property>
-        <property name="hibernate.hbm2ddl.auto">create</property>
+        <property name="hibernate.hbm2ddl.auto">validate</property>
         <mapping class="by.pvt.academy.yarkovich.entity.AcceptedOrder"/>
+        <mapping class="by.pvt.academy.yarkovich.entity.Client"/>
+        <mapping class="by.pvt.academy.yarkovich.entity.Employee"/>
+        <mapping class="by.pvt.academy.yarkovich.entity.Product"/>
     </session-factory>
 </hibernate-configuration>

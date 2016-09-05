@@ -1,7 +1,5 @@
 package by.pvt.academy.yarkovich.entity;
 
-import org.hibernate.type.descriptor.sql.TinyIntTypeDescriptor;
-
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.LinkedList;
@@ -13,43 +11,43 @@ public class AcceptedOrder extends PersistentObject implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Column
-    private Integer productNo;
+    private Long productNo;
     @Column
     private Double price;
     @Column
     private String starttime;
     @Column(name = "remote_ip_id")
-    private Integer ip;
+    private String ip;
     @Column
     private Integer status;
     private String prodname;
     private int tableNum;
-    private List<Product> list;
+    //private List<Product> list;
     @ManyToOne
     @JoinColumn (name = "client_id")
     private Client client;
 
     public AcceptedOrder() {
-        list = new LinkedList<Product>();
+       // list = new LinkedList<Product>();
     }
 
     public void clear() {
-        list.clear();
+       // list.clear();
     }
 
-    public int getIp() {
+    public String getIp() {
         return ip;
     }
 
-    public void setIp(int ip) {
+    public void setIp(String ip) {
         this.ip = ip;
     }
 
-    public int getProductNo() {
+    public Long getProductNo() {
         return productNo;
     }
 
-    public void setProductNo(int productNo) {
+    public void setProductNo(Long productNo) {
         this.productNo = productNo;
     }
 
@@ -96,8 +94,7 @@ public class AcceptedOrder extends PersistentObject implements Serializable {
     @Override
     public String toString() {
         return "AcceptedOrder [productNo=" + productNo + ", price=" + price + ", status=" + status
-                + ", ip=" + ip + ", starttime=" + starttime + ", prodname=" + prodname + ", tableNum=" + tableNum
-                + ", list=" + list + "]";
+                + ", ip=" + ip + ", starttime=" + starttime + ", prodname=" + prodname + ", tableNum=" + tableNum+"]";
     }
 
 }

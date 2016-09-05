@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import actions.Action;
+import by.pvt.academy.yarkovich.ProductsService;
 import by.pvt.academy.yarkovich.constants.AttributeNames;
 import by.pvt.academy.yarkovich.dao.ProductDAO;
 import by.pvt.academy.yarkovich.entity.Order;
@@ -23,14 +24,8 @@ public class RemoveFromOrderAction extends Action {
         if(order == null) {
             throw new RuntimeException("RemoveFromOrderAction: order doesnt exist");
         }
-        try {
-        	Product product = ProductDAO.getInstance().getById(
-                    Integer.parseInt(request.getParameter(PRODUCT_ID_TO_REMOVE)));
+        	Product product = ProductsService.getInstance().getById(Long.parseLong(request.getParameter(PRODUCT_ID_TO_REMOVE)));
             order.removeProduct(product);
-        } catch (SQLException e) {
-            errorManager.writeError(request, e, PRODUCT_ID_TO_REMOVE, true);
-            return PageNames.ERR_PAGE;
-        }
         return PageNames.ORDER_PAGE;
 	}
 

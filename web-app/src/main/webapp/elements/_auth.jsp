@@ -44,6 +44,9 @@
 						<img src="images/user_thumb.png" alt="yourimage" /> <br /> <br />
 						<br /> <b><a href="action?an=logout" style="font-size: 11px"> <fmt:message
 								key="login.exit" /></b>
+						</a><br />
+						<b><a href="/index" style="font-size: 11px"> <fmt:message
+								key="login.backtomenu" /></b>
 						</a>
 					</center>
 				</div>

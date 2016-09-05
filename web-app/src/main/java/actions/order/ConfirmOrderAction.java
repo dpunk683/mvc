@@ -8,7 +8,7 @@ import by.pvt.academy.yarkovich.constants.AttributeNames;
 import by.pvt.academy.yarkovich.dao.AcceptedOrderDAO;
 import by.pvt.academy.yarkovich.entity.AcceptedOrder;
 import by.pvt.academy.yarkovich.entity.Order;
-import by.pvt.academy.yarkovich.entity.Personal;
+import by.pvt.academy.yarkovich.entity.Employee;
 import by.pvt.academy.yarkovich.entity.Product;
 import by.pvt.academy.yarkovich.entity.Receipt;
 import by.pvt.academy.yarkovich.managers.MessageManager;
@@ -41,8 +41,8 @@ public class ConfirmOrderAction extends Action {
 			acceptedOrderDAO.addOrder(accepted_order,ip);
 		}
 		receipt.setSum(order_sum);
-		Personal personal = (Personal)request.getAttribute(AttributeNames.USER_OBJECT_ATTRIBUTE);
-		//ReceiptDAO.getInstance().add(receipt, personal.getId());
+		Employee employee = (Employee)request.getAttribute(AttributeNames.USER_OBJECT_ATTRIBUTE);
+		//ReceiptDAO.getInstance().add(receipt, employee.getId());
 		order = null;
 		request.getSession().setAttribute(AttributeNames.ORDER_ATTRIBUTE, order);
 		accepted_order.clear();

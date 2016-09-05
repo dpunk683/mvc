@@ -73,7 +73,8 @@
 				</tr>
 				<tr>
 					<td>
-						<form action="addwaiter" method="post">
+						<form action="action" method="post">
+							<input type="hidden" name="an" value="newemployee" />
 							<button type="submit" name="submit" class="button buttonBlue">
 								<fmt:message key="waiter.add" />
 							</button>

@@ -8,5 +8,5 @@ public class GlobalContr {
      * If this parameter is true, then detail description of exceptions will
      * be shown in browser, otherwise only in log file.
      */
-    public static final boolean DEBUG = true;
+    public static final boolean DEBUG = false;
 }

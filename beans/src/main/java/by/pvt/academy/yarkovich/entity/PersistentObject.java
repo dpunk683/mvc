@@ -1,10 +1,10 @@
 package by.pvt.academy.yarkovich.entity;
 
-import jdk.nashorn.internal.objects.annotations.*;
+import jdk.nashorn.internal.objects.annotations.Getter;
+import jdk.nashorn.internal.objects.annotations.Setter;
 import org.hibernate.Hibernate;
 
 import javax.persistence.*;
-import java.io.Serializable;
 
 @MappedSuperclass
 public abstract class PersistentObject implements LongID {

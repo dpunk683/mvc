@@ -13,9 +13,9 @@ public class Product extends PersistentObject implements Serializable {
 	@Column
 	private String name;
 	@Column
-	private double price;
+	private Double price;
 	@Column
-	private double secondPrice;
+	private Double secondPrice=0.0;
 	@Column
 	private String about;
 	@Column

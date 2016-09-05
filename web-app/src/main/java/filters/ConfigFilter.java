@@ -17,10 +17,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import by.pvt.academy.yarkovich.EmployeeService;
 import by.pvt.academy.yarkovich.constants.AccessLevels;
 import by.pvt.academy.yarkovich.constants.AttributeNames;
-import by.pvt.academy.yarkovich.dao.PersonalDAO;
-import by.pvt.academy.yarkovich.entity.Personal;
+import by.pvt.academy.yarkovich.dao.EmployeeDAO;
+import by.pvt.academy.yarkovich.entity.Employee;
 import by.pvt.academy.yarkovich.logger.RestLogger;
 import constants.PageNames;
 
@@ -69,14 +70,10 @@ public class ConfigFilter implements Filter {
 
                     //looking for user id (for authorize purpose)
                     if ((c.getName()).equals(ID)) {
-                        try {
-                            Personal personal = PersonalDAO.getInstance().getWaiter(Integer.parseInt(c.getValue()));
-                            session.setAttribute(AttributeNames.ACCESS_LEVEL_ATTRIBUTE, personal.getType());
-                            session.setAttribute(AttributeNames.USER_OBJECT_ATTRIBUTE, personal);
+                            Employee employee = EmployeeService.getInstance().getByID(Integer.parseInt(c.getValue()));
+                            session.setAttribute(AttributeNames.ACCESS_LEVEL_ATTRIBUTE, employee.getType());
+                            session.setAttribute(AttributeNames.USER_OBJECT_ATTRIBUTE, employee);
                             isFound = true;
-                        } catch (SQLException e) {
-                            RestLogger.getInstance(this.getClass()).writeError("Exception in EncodingFilter: " + e);
-                        }
                     }
 
                     // looking for user specified locale

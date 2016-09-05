@@ -10,6 +10,7 @@ import java.lang.reflect.ParameterizedType;
 
 import java.io.Serializable;
 
+
 /**
  * Created by dima on 27.08.2016.
  */
@@ -38,20 +39,11 @@ public class BaseDao<T> implements DAO<T> {
 
     }
 
-    public T get(Serializable id) throws DAOException {
+    public T get(Serializable id, Session session){
         log.info("Get class by id:" + id);
         T t = null;
-        try {
-            Session session = HibernateUtil.getHibernateUtil().getSession();
-            transaction = session.beginTransaction();
             t = (T) session.get(getPersistentClass(), id);
-            transaction.commit();
             log.info("get clazz:" + t);
-        } catch (HibernateException e) {
-            transaction.rollback();
-            log.error("Error get " + getPersistentClass() + " in Dao" + e);
-            throw new DAOException(e);
-        }
         return t;
     }
 

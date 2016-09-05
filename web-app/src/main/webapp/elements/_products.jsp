@@ -37,7 +37,7 @@
 						</tr>
 						<tr>
 							<c:choose>
-								<c:when test="${menu.secondPrice>0}">
+								<c:when test="${menu.secondPrice!=null && menu.secondPrice>0}">
 									<td id="menuTable"><b><fmt:message
 												key="menu.actionprice" />${menu.secondPrice}</b><br /> <b><fmt:message
 												key="menu.regularprice" />${menu.price}</b><br />

@@ -7,18 +7,18 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import actions.Action;
+import by.pvt.academy.yarkovich.OrdersService;
 import by.pvt.academy.yarkovich.constants.AttributeNames;
 import by.pvt.academy.yarkovich.dao.AcceptedOrderDAO;
 import by.pvt.academy.yarkovich.entity.AcceptedOrder;
 import constants.PageNames;
 
-public class PersonalViewOrdersAction extends Action {
+public class EmployeeViewOrdersAction extends Action {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
 		HttpSession session = request.getSession();
-		
-		List<AcceptedOrder> acc_orders = AcceptedOrderDAO.getInstance().get();
+		List<AcceptedOrder> acc_orders = OrdersService.getInstance().getAll();
 		session.setAttribute(AttributeNames.ACC_ORDERS_ATTRIBUTE, acc_orders);   
 		return PageNames.ORDERS_PAGE;
 	}

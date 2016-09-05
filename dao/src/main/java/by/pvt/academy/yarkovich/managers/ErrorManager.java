@@ -33,16 +33,17 @@ public class ErrorManager {
 
         //Setting errmessage attribute
 //       ?
-//        if (GlobalContr.DEBUG == true) {
-//            if(e == null) {
-//                request.setAttribute(AttributeNames.ERR_MESSAGE_ATTRIBUTE, msg);
-//            } else {
-//                request.setAttribute(AttributeNames.ERR_MESSAGE_ATTRIBUTE, msg + ":" + e);
-//            }
-//        } else {
-//            request.setAttribute(AttributeNames.ERR_MESSAGE_ATTRIBUTE, MessageManager.ERR_SORRY);
-//        }
-//
+        //TODO
+        if (true) {
+            if(e == null) {
+                request.setAttribute(AttributeNames.ERR_MESSAGE_ATTRIBUTE, msg);
+            } else {
+                request.setAttribute(AttributeNames.ERR_MESSAGE_ATTRIBUTE, msg + ":" + e);
+            }
+        } else {
+            request.setAttribute(AttributeNames.ERR_MESSAGE_ATTRIBUTE, MessageManager.ERR_SORRY);
+        }
+
         //Writing to log file
         if(toLog) {
             if(e == null) {

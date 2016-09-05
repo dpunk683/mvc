@@ -1,7 +1,6 @@
 package by.pvt.academy.yarkovich.entity;
 
 import javax.persistence.*;
-import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.List;
 
@@ -24,7 +23,7 @@ public class Client extends PersistentObject implements Serializable  {
 	private String oldLoyalityCardNo;
 	@Column
 	private double spentMoney;
-	@OneToMany(mappedBy = "clients", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "client", cascade = CascadeType.ALL)
 	private List <AcceptedOrder> acceptedOrderSet;
 
 

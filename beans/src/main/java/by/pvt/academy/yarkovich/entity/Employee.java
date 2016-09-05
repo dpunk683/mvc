@@ -1,11 +1,23 @@
 package by.pvt.academy.yarkovich.entity;
 
-public class Personal {
-	private int id;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import java.io.Serializable;
+
+@Entity
+@Table(name="employee")
+public class Employee extends PersistentObject implements Serializable {
+	private static final long serialVersionUID = 12L;
+	@Column
 	private String login;
+	@Column
 	private String name;
-	private int type;
+	@Column
+	private Integer type;
+	@Column
 	private String pass;
+	@Column
 	private String cardNum;
 	
 	public String getLogin() {
@@ -13,12 +25,6 @@ public class Personal {
 	}
 	public void setLogin(String login) {
 		this.login = login;
-	}
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
 	}
 	public String getName() {
 		return name;
@@ -29,7 +35,7 @@ public class Personal {
 	public int getType() {
 		return type;
 	}
-	public void setType(int type) {
+	public void setType(Integer type) {
 		this.type = type;
 	}
 	public String getPass() {
@@ -46,25 +52,23 @@ public class Personal {
 	}
 	@Override
 	public String toString() {
-		return "Waiter [id=" + id + ", login=" + login + ", name=" + name + ", type=" + type + ", pass=" + pass
+		return "Waiter [login=" + login + ", name=" + name + ", type=" + type + ", pass=" + pass
 				+ ", cardNum=" + cardNum + "]";
 	}
-	public Personal(int id, String name, int type, String pass, String cardNum) {
+	public Employee(String name, Integer type, String pass, String cardNum) {
 		super();
-		this.id = id;
 		this.name = name;
 		this.type = type;
 		this.pass = pass;
 		this.cardNum = cardNum;
 	}
-	public Personal() {
+	public Employee() {
 	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((cardNum == null) ? 0 : cardNum.hashCode());
-		result = prime * result + id;
 		result = prime * result + ((login == null) ? 0 : login.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result + ((pass == null) ? 0 : pass.hashCode());
@@ -79,13 +83,11 @@ public class Personal {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Personal other = (Personal) obj;
+		Employee other = (Employee) obj;
 		if (cardNum == null) {
 			if (other.cardNum != null)
 				return false;
 		} else if (!cardNum.equals(other.cardNum))
-			return false;
-		if (id != other.id)
 			return false;
 		if (login == null) {
 			if (other.login != null)

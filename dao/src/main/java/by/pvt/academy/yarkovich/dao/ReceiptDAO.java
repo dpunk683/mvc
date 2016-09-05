@@ -1,16 +1,17 @@
 package  by.pvt.academy.yarkovich.dao;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import by.pvt.academy.yarkovich.constants.HQLRequests;
+import by.pvt.academy.yarkovich.entity.Receipt;
+import by.pvt.academy.yarkovich.utils.HibernateUtil;
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 
-import by.pvt.academy.yarkovich.constants.SQLRequests;
-import by.pvt.academy.yarkovich.entity.Receipt;
-
-public class ReceiptDAO extends DAO {
+public class ReceiptDAO extends BaseDao {
 	private static ReceiptDAO instance;
 
 	public static ReceiptDAO getInstance() {
@@ -20,25 +21,16 @@ public class ReceiptDAO extends DAO {
 	        return instance;
 	}
 
-	public void add(Receipt receipt, int waiter_id) {
-		PreparedStatement ps = null;
-		Connection connection = null;
+	public void add(Receipt receipt, Long waiter_id) {
 		String currTime = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
-		try {
-			connection = poolInstance.getConnection();
-			String query = SQLRequests.SQL_ADD_RECEIPT_TO_BASE;
-			ps = poolInstance.getConnection().prepareStatement(query);
-			ps.setDouble(1, receipt.getSum());
-			ps.setString(2, currTime);
-			ps.setInt(3, waiter_id);
-			ps.executeUpdate();
-		}  catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			poolInstance.freeConnection(connection);
-		}
+		Session session = HibernateUtil.getHibernateUtil().getSession();
+		Transaction tx = session.beginTransaction();
+		Query query = session.createQuery(HQLRequests.HQL_ADD_RECEIPT_TO_BASE);
+		query.setDouble(1, receipt.getSum());
+        query.setString(2, currTime);
+        query.setLong(3, waiter_id);
+        query.executeUpdate();
+        tx.commit();
+        session.close();
 	}
-
-
-
 }

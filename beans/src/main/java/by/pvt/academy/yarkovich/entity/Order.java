@@ -25,7 +25,7 @@ public class Order implements Serializable {
     }
     
     public void removeProduct(Product product) {
-        int id = product.getId();
+        Long id = product.getId();
         Product p = null;
         for(Iterator<Product> i = list.iterator(); i.hasNext() ; ) {
             p = i.next();
