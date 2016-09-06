@@ -13,4 +13,5 @@ public class HQLRequests {
     public static final String HQL_ADD_RECEIPT_TO_BASE ="INSERT INTO rcpheaders (`sum`, `startTime`,`waiterId`)  ?, ?, ?";
     public static final String HQL_GET_WAITER_BY_CARD = "FROM Employee WHERE cardNum=:cardNum";
     public static final String HQL_GET_WAITER_BY_LOGIN ="FROM Employee WHERE login=:login";
+    public static final String HQL_GET_POSES = "FROM TablePOS"; ;
 }

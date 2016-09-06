@@ -26,7 +26,7 @@ public class ProductsService {
     }
 
     public List<Product> getNewMenu() {
-        Session session = HibernateUtil.getHibernateUtil().getSession();
+        Session session = HibernateUtil.getHibernateUtil().getCurrentSession();
         Transaction tx = session.beginTransaction();
         List <Product> list = ProductDAO.getInstance().getWholeProd(session);
         tx.commit();
@@ -34,7 +34,7 @@ public class ProductsService {
     }
 
     public List<Product> getDayDish() {
-        Session session = HibernateUtil.getHibernateUtil().getSession();
+        Session session = HibernateUtil.getHibernateUtil().getCurrentSession();
         Transaction tx = session.beginTransaction();
         List <Product> list = ProductDAO.getInstance().getDayDish(session);
         tx.commit();
@@ -42,7 +42,7 @@ public class ProductsService {
     }
 
     public Product getById(long l) {
-        Session session = HibernateUtil.getHibernateUtil().getSession();
+        Session session = HibernateUtil.getHibernateUtil().getCurrentSession();
         Transaction tx = session.beginTransaction();
         Product product = ProductDAO.getInstance().getById(l, session);
         tx.commit();

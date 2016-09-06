@@ -14,17 +14,16 @@ public class EmployeeDAO extends BaseDao {
     private static EmployeeDAO instance;
 
     private EmployeeDAO() {
-        super();
-    }
+            }
 
-    public static EmployeeDAO getInstance() {
+    public synchronized static EmployeeDAO getInstance() {
         if (instance == null) {
             instance = new EmployeeDAO();
         }
         return instance;
     }
 
-    public Employee getEmployee(Session session, String login, String password) {
+    public synchronized Employee getEmployee(String login, String password) {
         Query query = session.createQuery(HQLRequests.HQL_GET_WAITER);
         query.setParameter("login", login);
         query.setParameter("password", password);
@@ -35,32 +34,28 @@ public class EmployeeDAO extends BaseDao {
     /**
      * Implements #HQL_GET_USER_BY_UID
      */
-    public Employee getWaiter(int id) {
-        Session session = HibernateUtil.getHibernateUtil().getSession();
-        Transaction tx = session.beginTransaction();
+    public synchronized Employee getWaiter(int id) {
         Query query = session.createQuery(HQLRequests.HQL_GET_USER_BY_UID);
         query.setParameter("id",id);
         Employee employee = (Employee) query.uniqueResult();
-        tx.commit();
-        session.close();
         return employee;
     }
 
-    public List<Employee> getEmployee(Session session, String cardNum) {
+    public synchronized List<Employee> getEmployee(String cardNum) {
         Query query = session.createQuery(HQLRequests.HQL_GET_WAITER_BY_CARD);
         query.setParameter("cardNum", cardNum);
         List<Employee> employee = query.list();
         return employee;
     }
 
-    public List<Employee> getEmployeeByLogin(Session session, String login) {
+    public synchronized List<Employee> getEmployeeByLogin(String login) {
         Query query = session.createQuery(HQLRequests.HQL_GET_WAITER_BY_LOGIN);
         query.setParameter("login", login);
         List<Employee> employee = query.list();
         return employee;
     }
 
-    public void addEmployee(Employee employee, Session session) {
+    public synchronized void addEmployee(Employee employee) {
         session.saveOrUpdate(employee);
     }
 

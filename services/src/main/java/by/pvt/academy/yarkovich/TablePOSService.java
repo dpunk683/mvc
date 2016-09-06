@@ -1,7 +1,7 @@
 package by.pvt.academy.yarkovich;
 
-import by.pvt.academy.yarkovich.dao.AcceptedOrderDAO;
-import by.pvt.academy.yarkovich.entity.AcceptedOrder;
+import by.pvt.academy.yarkovich.dao.TablePOSDAO;
+import by.pvt.academy.yarkovich.entity.TablePOS;
 import by.pvt.academy.yarkovich.utils.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -9,24 +9,23 @@ import org.hibernate.Transaction;
 import java.util.List;
 
 /**
- * Created by dima on 03.09.2016.
+ * Created by dima on 05.09.2016.
  */
-public class OrdersService {
+public class TablePOSService {
 
-    private static OrdersService instance;
+    private static TablePOSService instance;
 
-    public static OrdersService getInstance() {
+    public static TablePOSService getInstance() {
         if (instance == null) {
-            instance = new OrdersService();
+            instance = new TablePOSService();
         }
         return instance;
     }
 
-
-    public List<AcceptedOrder> getAll() {
+    public List<TablePOS> getAll() {
         Session session = HibernateUtil.getHibernateUtil().getCurrentSession();
         Transaction tx = session.beginTransaction();
-        List <AcceptedOrder> list = AcceptedOrderDAO.getInstance().getAll(session);
+        List <TablePOS> list = TablePOSDAO.getInstance().getAll(session);
         tx.commit();
         return list;
     }

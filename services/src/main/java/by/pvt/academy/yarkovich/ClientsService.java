@@ -26,7 +26,7 @@ public class ClientsService {
     }
 
     public List<Client> getAll() {
-        Session session = HibernateUtil.getHibernateUtil().getSession();
+        Session session = HibernateUtil.getHibernateUtil().getCurrentSession();
         Transaction tx = session.beginTransaction();
         List <Client> list = ClientDAO.getInstance().getAll(session);
         tx.commit();

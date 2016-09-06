@@ -8,7 +8,7 @@ import java.io.Serializable;
 public interface DAO<T> {
     void saveOrUpdate(T t) throws DAOException;
 
-    T get(Serializable id, Session session);
+    T get(Serializable id) throws DAOException;
 
     T load(Serializable id) throws DAOException;
 

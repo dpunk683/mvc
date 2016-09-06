@@ -54,7 +54,7 @@ public class ActionContainer {
 			container.put(ACTION_CONFIRM_ORDER, new ConfirmOrderAction());
 			container.put(ACTION_PESR_VIEW_ORDER, new EmployeeViewOrdersAction());
 			container.put(ACTION_NEW_EMPLOYEE_OPEN_FORM, new NewEmployeeFormAction());
-			container.put(ACTION_ADD_EMPLOYEE, new NewEmployeeAddAction());
+			container.put(ACTION_ADD_EMPLOYEE, NewEmployeeAddAction.getInstance());
 			//container.put(ACTION_ADD_EMPLOYEE, new AddNewEmployeeAction());
 		}
 	}

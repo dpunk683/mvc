@@ -1,6 +1,7 @@
 package by.pvt.academy.yarkovich.entity;
 
 import javax.persistence.*;
+import javax.persistence.Table;
 import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.List;

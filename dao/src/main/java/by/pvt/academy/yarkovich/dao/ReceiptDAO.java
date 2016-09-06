@@ -23,7 +23,7 @@ public class ReceiptDAO extends BaseDao {
 
 	public void add(Receipt receipt, Long waiter_id) {
 		String currTime = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
-		Session session = HibernateUtil.getHibernateUtil().getSession();
+		Session session = HibernateUtil.getHibernateUtil().getCurrentSession();
 		Transaction tx = session.beginTransaction();
 		Query query = session.createQuery(HQLRequests.HQL_ADD_RECEIPT_TO_BASE);
 		query.setDouble(1, receipt.getSum());

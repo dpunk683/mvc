@@ -82,6 +82,7 @@
 					</td>
 					<td>
 						<form action="addclient" method="post">
+							<input type="hidden" name="an" value="newclient" />
 							<button type="submit" name="submit" class="button buttonBlue">
 								<fmt:message key="client.add" />
 							</button>
@@ -91,6 +92,7 @@
 				<tr>
 					<td>
 						<form action="addtable" method="post">
+							<input type="hidden" name="an" value="newtable" />
 							<button type="submit" name="submit" class="button buttonBlue">
 								<fmt:message key="table.add" />
 							</button>
@@ -98,31 +100,9 @@
 					</td>
 					<td>
 						<form action="addproduct" method="post">
+							<input type="hidden" name="an" value="newproduct" />
 							<button type="submit" name="submit" class="button buttonBlue">
 								<fmt:message key="product.add" />
-							</button>
-						</form>
-					</td>
-				</tr>
-				<tr>
-					<td style="font-size: 9px; text-align: center">
-						<h1>
-							<fmt:message key="pos.admin.menu" />
-						</h1>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<form action="getZreport" method="post">
-							<button type="submit" name="submit" class="button buttonBlue">
-								<fmt:message key="getZreport" />
-							</button>
-						</form>
-					</td>
-					<td>
-						<form action="registerPOS" method="post">
-							<button type="submit" name="submit" class="button buttonBlue">
-								<fmt:message key="registerPOS" />
 							</button>
 						</form>
 					</td>

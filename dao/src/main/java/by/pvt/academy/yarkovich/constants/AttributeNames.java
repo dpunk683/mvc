@@ -14,6 +14,7 @@ public class AttributeNames {
     public static final String SHOP_CLIENTS_ATTRIBUTE = "clients";
 	public static final String DAY_DISH = "daydish";
 	public static final String MENU = "menu";
+    public static final String WHOLE_POSES = "poses";
 	public static final String ORDER_ATTRIBUTE = "order";
 	public static final String ACC_ORDERS_ATTRIBUTE = "acc_orders";
 	public static final String RECEIPT_ATTRIBUTE = "receipt";
