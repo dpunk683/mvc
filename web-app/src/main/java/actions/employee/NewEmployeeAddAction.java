@@ -44,9 +44,6 @@ public class NewEmployeeAddAction extends Action {
         } catch (LoginExistsErrorException e) {
             return PageNames.EMPLOYEE_LOGIN_EXISTS_PAGE;
         }
-        finally {
-            HibernateUtil.getHibernateUtil().closeSession();
-        }
         return PageNames.SUCCESS_PAGE;
     }
 }

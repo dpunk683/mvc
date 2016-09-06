@@ -1,17 +1,17 @@
 package controller;
 
-import java.io.IOException;
+import actions.Action;
+import actions.container.ActionContainer;
+import actions.container.ActionNotFoundException;
+import by.pvt.academy.yarkovich.logger.RestLogger;
+import constants.PageNames;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import actions.Action;
-import actions.container.ActionContainer;
-import actions.container.ActionNotFoundException;
-import by.pvt.academy.yarkovich.managers.ErrorManager;
-import constants.PageNames;
+import java.io.IOException;
 
 public class FrontController extends HttpServlet {
 
@@ -20,9 +20,8 @@ public class FrontController extends HttpServlet {
 		 */
 		private static final long serialVersionUID = 729554496074095235L;
 		private ActionContainer actionContainer = ActionContainer.getInstance();
-	    private ErrorManager errorManager = ErrorManager.getInstance();
-	    
-	    /** 
+
+	/**
 	     * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
 	     * @param request servlet request
 	     * @param response servlet response
@@ -37,19 +36,19 @@ public class FrontController extends HttpServlet {
 	        try {
 	            Action action = actionContainer.getAction(request);
 	            page = action.execute(request, response);
-	            if(page == null) {System.out.println("page = 0");
+	            if(page == null) {
 	                page = PageNames.INDEX_PAGE;
 	            }
 	            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(page);
 	            dispatcher.forward(request, response);
 	            
 	        } catch (ActionNotFoundException e) {
-	            errorManager.writeError(request, e, "Unknown Action command: ", true);
+				RestLogger.getInstance(this.getClass()).writeError("Exception at Unknown Action command: " + e);
 	            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(PageNames.ERR_PAGE);
 	            dispatcher.forward(request, response);
 	            
-	        } catch (Exception e) {
-	            errorManager.writeError(request, e, "Exception at FrontController: ", true);
+	        } catch (RuntimeException e) {
+				RestLogger.getInstance(this.getClass()).writeError("Exception at FrontController HERE: " + e);
 	            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(PageNames.ERR_PAGE);
 	            dispatcher.forward(request, response);
 	        }

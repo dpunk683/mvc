@@ -2,6 +2,7 @@ package by.pvt.academy.yarkovich.dao;
 
 import by.pvt.academy.yarkovich.constants.HQLRequests;
 import by.pvt.academy.yarkovich.entity.Employee;
+import by.pvt.academy.yarkovich.exceptions.DAOException;
 import by.pvt.academy.yarkovich.utils.HibernateUtil;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -23,7 +24,7 @@ public class EmployeeDAO extends BaseDao {
         return instance;
     }
 
-    public synchronized Employee getEmployee(String login, String password) {
+    public synchronized Employee getEmployee(String login, String password) throws DAOException {
         Query query = session.createQuery(HQLRequests.HQL_GET_WAITER);
         query.setParameter("login", login);
         query.setParameter("password", password);
@@ -34,28 +35,28 @@ public class EmployeeDAO extends BaseDao {
     /**
      * Implements #HQL_GET_USER_BY_UID
      */
-    public synchronized Employee getWaiter(int id) {
+    public synchronized Employee getEmployeeById(Long id) throws DAOException {
         Query query = session.createQuery(HQLRequests.HQL_GET_USER_BY_UID);
         query.setParameter("id",id);
         Employee employee = (Employee) query.uniqueResult();
         return employee;
     }
 
-    public synchronized List<Employee> getEmployee(String cardNum) {
+    public synchronized List<Employee> getEmployee(String cardNum) throws DAOException {
         Query query = session.createQuery(HQLRequests.HQL_GET_WAITER_BY_CARD);
         query.setParameter("cardNum", cardNum);
         List<Employee> employee = query.list();
         return employee;
     }
 
-    public synchronized List<Employee> getEmployeeByLogin(String login) {
+    public synchronized List<Employee> getEmployeeByLogin(String login) throws DAOException {
         Query query = session.createQuery(HQLRequests.HQL_GET_WAITER_BY_LOGIN);
         query.setParameter("login", login);
         List<Employee> employee = query.list();
         return employee;
     }
 
-    public synchronized void addEmployee(Employee employee) {
+    public synchronized void addEmployee(Employee employee)throws DAOException {
         session.saveOrUpdate(employee);
     }
 

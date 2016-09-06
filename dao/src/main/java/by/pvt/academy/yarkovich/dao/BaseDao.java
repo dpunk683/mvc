@@ -15,7 +15,7 @@ import java.lang.reflect.ParameterizedType;
  */
 public class BaseDao<T> implements DAO<T> {
     private static Logger log = Logger.getLogger(BaseDao.class);
-    protected static Session session = HibernateUtil.getHibernateUtil().getCurrentSession();
+    protected Session session = HibernateUtil.getHibernateUtil().getCurrentSession();
 
 
     public BaseDao() {
@@ -34,7 +34,7 @@ public class BaseDao<T> implements DAO<T> {
 
     }
 
-    public T get(Serializable id){
+    public T get(Serializable id) throws DAOException{
         log.info("Get class by id:" + id);
         T t = null;
             t = (T) session.get(getPersistentClass(), id);

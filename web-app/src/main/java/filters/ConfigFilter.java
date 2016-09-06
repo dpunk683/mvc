@@ -23,6 +23,7 @@ import by.pvt.academy.yarkovich.constants.AttributeNames;
 import by.pvt.academy.yarkovich.dao.EmployeeDAO;
 import by.pvt.academy.yarkovich.entity.Employee;
 import by.pvt.academy.yarkovich.logger.RestLogger;
+import by.pvt.academy.yarkovich.utils.HibernateUtil;
 import constants.PageNames;
 
 /**
@@ -41,8 +42,8 @@ public class ConfigFilter implements Filter {
         //устанавливаем кодировку
         HttpServletRequest req = (HttpServletRequest) request;
         HttpServletResponse resp = (HttpServletResponse) response;
-        HttpSession session = req.getSession();
-        Integer accesslevel = (Integer) session.getAttribute(AttributeNames.ACCESS_LEVEL_ATTRIBUTE);
+        HttpSession httpSession = req.getSession();
+        Integer accesslevel = (Integer) httpSession.getAttribute(AttributeNames.ACCESS_LEVEL_ATTRIBUTE);
         req.setCharacterEncoding("UTF-8");
         try {
             //смотрим куки
@@ -52,7 +53,7 @@ public class ConfigFilter implements Filter {
         }
         if (accesslevel == null) {
             accesslevel = AccessLevels.GUEST;
-            session.setAttribute(AttributeNames.ACCESS_LEVEL_ATTRIBUTE, accesslevel);
+            httpSession.setAttribute(AttributeNames.ACCESS_LEVEL_ATTRIBUTE, accesslevel);
             //RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/jsp/login.jsp");
             //dispatcher.forward(req, resp);
             resp.sendRedirect(req.getContextPath() + PageNames.INDEX_PAGE);
@@ -61,32 +62,36 @@ public class ConfigFilter implements Filter {
         chain.doFilter(req, resp);
     }
 
-    private void initSession(HttpSession session, HttpServletRequest request) {
-        if (session.isNew()) {
-            Cookie[] cookies = request.getCookies();
-            boolean isFound = false;
-            if (cookies != null) {
-                for (Cookie c : cookies) {
+    private void initSession(HttpSession httpSession, HttpServletRequest request) {
+        try {
+            if (httpSession.isNew()) {
+                Cookie[] cookies = request.getCookies();
+                boolean isFound = false;
+                if (cookies != null) {
+                    for (Cookie c : cookies) {
 
-                    //looking for user id (for authorize purpose)
-                    if ((c.getName()).equals(ID)) {
-                            Employee employee = EmployeeService.getInstance().getByID(Integer.parseInt(c.getValue()));
-                            session.setAttribute(AttributeNames.ACCESS_LEVEL_ATTRIBUTE, employee.getType());
-                            session.setAttribute(AttributeNames.USER_OBJECT_ATTRIBUTE, employee);
+                        //looking for user id (for authorize purpose)
+                        if ((c.getName()).equals(ID)) {
+                            Employee employee = EmployeeService.getInstance().getByID(Long.parseLong(c.getValue()));
+                            httpSession.setAttribute(AttributeNames.ACCESS_LEVEL_ATTRIBUTE, employee.getType());
+                            httpSession.setAttribute(AttributeNames.USER_OBJECT_ATTRIBUTE, employee);
                             isFound = true;
-                    }
+                        }
 
-                    // looking for user specified locale
-                    if ((c.getName()).equals(AttributeNames.SESSION_LOCALE_ATTRIBUTE)) {
-                        session.setAttribute(AttributeNames.SESSION_LOCALE_ATTRIBUTE, LOCALE + c.getValue());
-                    }
-                }//end of foreach loop
-            }//end of if(cookies != null)
+                        // looking for user specified locale
+                        if ((c.getName()).equals(AttributeNames.SESSION_LOCALE_ATTRIBUTE)) {
+                            httpSession.setAttribute(AttributeNames.SESSION_LOCALE_ATTRIBUTE, LOCALE + c.getValue());
+                        }
+                    }//end of foreach loop
+                }//end of if(cookies != null)
 
-            if (!isFound) {
-                session.setAttribute(AttributeNames.ACCESS_LEVEL_ATTRIBUTE, AccessLevels.GUEST);
-            }
-        }//end of if(session)
+                if (!isFound) {
+                    httpSession.setAttribute(AttributeNames.ACCESS_LEVEL_ATTRIBUTE, AccessLevels.GUEST);
+                }
+            }//end of if(httpSession)
+        } catch (RuntimeException e) {
+            RestLogger.getInstance(this.getClass()).writeError("Exception at ConfigFilter: Init Session " + e);
+        }
     }
 
 

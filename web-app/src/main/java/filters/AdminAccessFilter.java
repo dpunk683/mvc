@@ -26,8 +26,8 @@ public class AdminAccessFilter implements Filter {
 
 
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-        HttpSession session = ((HttpServletRequest) request).getSession();
-        Integer accesslevel = (Integer) session.getAttribute(AttributeNames.ACCESS_LEVEL_ATTRIBUTE);
+        HttpSession httpSession = ((HttpServletRequest) request).getSession();
+        Integer accesslevel = (Integer) httpSession.getAttribute(AttributeNames.ACCESS_LEVEL_ATTRIBUTE);
 
         if ((accesslevel != null) && (accesslevel.equals(AccessLevels.ADMINISTRATOR))) {
             chain.doFilter(request, response);

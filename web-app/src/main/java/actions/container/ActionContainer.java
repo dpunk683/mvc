@@ -43,7 +43,7 @@ public class ActionContainer {
 		if (container == null) {
 			container = new HashMap<String, Action>();
 			container.put(ACTION_VIEW_CLIENTS, new ViewAllClientsAction());
-			container.put(ACTION_LOGIN, new EmployeeLoginAction());
+			container.put(ACTION_LOGIN, EmployeeLoginAction.getInstance());
 			container.put(ACTION_LOGOUT, new EmployeeLogoutAction());
 			container.put(ACTION_GETDAYDISH, new GetDishOfTheDayAction());
 			container.put(ACTION_WATCH_MENU, new GetNewMenuAction());

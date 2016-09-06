@@ -1,21 +1,19 @@
 package actions.employee;
 
-import java.sql.SQLException;
+import actions.Action;
+import by.pvt.academy.yarkovich.EmployeeService;
+import by.pvt.academy.yarkovich.constants.AttributeNames;
+import by.pvt.academy.yarkovich.entity.Employee;
+import by.pvt.academy.yarkovich.exceptions.AuthorizationErrorException;
+import by.pvt.academy.yarkovich.logger.RestLogger;
+import by.pvt.academy.yarkovich.utils.HibernateUtil;
+import constants.PageNames;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import actions.Action;
-import by.pvt.academy.yarkovich.EmployeeService;
-import by.pvt.academy.yarkovich.constants.AccessLevels;
-import by.pvt.academy.yarkovich.constants.AttributeNames;
-import by.pvt.academy.yarkovich.dao.EmployeeDAO;
-import by.pvt.academy.yarkovich.entity.Employee;
-import by.pvt.academy.yarkovich.exceptions.AuthorizationErrorException;
-import by.pvt.academy.yarkovich.managers.MessageManager;
-import constants.PageNames;
 
 public class EmployeeLoginAction extends Action {
     private final String ID = "id";
@@ -23,14 +21,25 @@ public class EmployeeLoginAction extends Action {
     private final String PASSWORD = "pass";
     private final int ONE_WEEK = 60 * 60 * 24 * 7;
 
-    public String execute(HttpServletRequest request, HttpServletResponse response) {
+    private static EmployeeLoginAction instance;
 
-        HttpSession session = request.getSession();
-        Integer accesslevel = (Integer) session.getAttribute(AttributeNames.ACCESS_LEVEL_ATTRIBUTE);
+    private EmployeeLoginAction() {
+    }
+
+    public synchronized static EmployeeLoginAction getInstance() {
+        if (instance == null) {
+            instance = new EmployeeLoginAction();
+        }
+        return instance;
+    }
+
+    public synchronized String execute(HttpServletRequest request, HttpServletResponse response) {
+
+        HttpSession httpSession = request.getSession();
+        Integer accesslevel = (Integer) httpSession.getAttribute(AttributeNames.ACCESS_LEVEL_ATTRIBUTE);
         //Если не существует такого атрибута, значит приложение работает некорректно
         if (accesslevel == null) {
-            errorManager.writeError(request, null, "Accesslevel is null", true);
-            System.out.println("Login acc level 0");
+            RestLogger.getInstance(this.getClass()).writeError ("Accesslevel is null");
             return PageNames.ERR_PAGE;
         }
         try {
@@ -42,14 +51,14 @@ public class EmployeeLoginAction extends Action {
             }
             //Если авторизация выполнена, то присваиваем сессии соответствующие атрибуты
             //и устанавливаем куки
-            session.setAttribute(AttributeNames.ACCESS_LEVEL_ATTRIBUTE, employee.getType());
-            session.setAttribute(AttributeNames.USER_OBJECT_ATTRIBUTE, employee);
+            httpSession.setAttribute(AttributeNames.ACCESS_LEVEL_ATTRIBUTE, employee.getType());
+            httpSession.setAttribute(AttributeNames.USER_OBJECT_ATTRIBUTE, employee);
             Cookie c = new Cookie(ID, String.valueOf(employee.getId()));
             c.setMaxAge(ONE_WEEK);
             response.addCookie(c);
             return PageNames.INDEX_PAGE;
         } catch (AuthorizationErrorException e) {
-            errorManager.writeError(request, null, MessageManager.ERR_LOGIN, false);
+            RestLogger.getInstance(this.getClass()).writeError("Exception at EmplLoginAction: " + e);
             return PageNames.ERR_PAGE;
         }
     }
