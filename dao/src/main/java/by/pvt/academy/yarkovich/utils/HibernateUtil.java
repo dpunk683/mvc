@@ -51,7 +51,7 @@ public final class HibernateUtil {
         return s;
     }
 
-    private static void closeSession() {
+    public static void closeSession() {
         try {
             final Session s = threadSession.get();
             if (s != null && s.isOpen()) {
@@ -86,8 +86,6 @@ public final class HibernateUtil {
                 HibernateException ex) {
             rollbackTransaction();
             RestLogger.getInstance(HibernateUtil.class).writeError("ERROR Flushing session and committing transaction of this thread.");
-        } finally {
-            closeSession();
         }
     }
 

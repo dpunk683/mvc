@@ -15,7 +15,7 @@ import java.lang.reflect.ParameterizedType;
  */
 public class BaseDao<T> implements DAO<T> {
     private static Logger log = Logger.getLogger(BaseDao.class);
-    protected Session session = HibernateUtil.getHibernateUtil().getCurrentSession();
+  !!!!!!!  protected Session session = HibernateUtil.getHibernateUtil().getCurrentSession();
 
 
     public BaseDao() {

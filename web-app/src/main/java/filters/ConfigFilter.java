@@ -60,6 +60,7 @@ public class ConfigFilter implements Filter {
             return;
         }
         chain.doFilter(req, resp);
+        HibernateUtil.closeSession();
     }
 
     private void initSession(HttpSession httpSession, HttpServletRequest request) {
