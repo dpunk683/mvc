@@ -15,7 +15,7 @@ import java.lang.reflect.ParameterizedType;
  */
 public class BaseDao<T> implements DAO<T> {
     private static Logger log = Logger.getLogger(BaseDao.class);
-  !!!!!!!  protected Session session = HibernateUtil.getHibernateUtil().getCurrentSession();
+  //!!!!!!!  protected Session session = HibernateUtil.getHibernateUtil().getCurrentSession();
 
 
     public BaseDao() {
@@ -24,7 +24,7 @@ public class BaseDao<T> implements DAO<T> {
 
     public void saveOrUpdate(T t) throws DAOException {
         try {
-            session.saveOrUpdate(t);
+            HibernateUtil.getCurrentSession().saveOrUpdate(t);
             log.info("saveOrUpdate(t):" + t);
             log.info("Save or update (commit):" + t);
         } catch (HibernateException e) {
@@ -37,7 +37,7 @@ public class BaseDao<T> implements DAO<T> {
     public T get(Serializable id) throws DAOException{
         log.info("Get class by id:" + id);
         T t = null;
-            t = (T) session.get(getPersistentClass(), id);
+            t = (T) HibernateUtil.getCurrentSession().get(getPersistentClass(), id);
             log.info("get clazz:" + t);
         return t;
     }
@@ -46,9 +46,9 @@ public class BaseDao<T> implements DAO<T> {
         log.info("Load class by id:" + id);
         T t = null;
         try {
-            t = (T) session.load(getPersistentClass(), id);
+            t = (T) HibernateUtil.getCurrentSession().load(getPersistentClass(), id);
             log.info("load() clazz:" + t);
-            session.isDirty();
+            HibernateUtil.getCurrentSession().isDirty();
         } catch (HibernateException e) {
             log.error("Error load() " + getPersistentClass() + " in Dao" + e);
             throw new DAOException(e);
@@ -58,7 +58,7 @@ public class BaseDao<T> implements DAO<T> {
 
     public void delete(T t) throws DAOException {
         try {
-            session.delete(t);
+            HibernateUtil.getCurrentSession().delete(t);
             log.info("Delete:" + t);
         } catch (HibernateException e) {
             log.error("Error save or update PERSON in Dao" + e);

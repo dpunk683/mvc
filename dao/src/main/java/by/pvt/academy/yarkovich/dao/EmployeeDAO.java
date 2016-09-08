@@ -25,7 +25,7 @@ public class EmployeeDAO extends BaseDao {
     }
 
     public synchronized Employee getEmployee(String login, String password) throws DAOException {
-        Query query = session.createQuery(HQLRequests.HQL_GET_WAITER);
+        Query query = HibernateUtil.getCurrentSession().createQuery(HQLRequests.HQL_GET_WAITER);
         query.setParameter("login", login);
         query.setParameter("password", password);
         Employee employee = (Employee) query.uniqueResult();
@@ -36,28 +36,28 @@ public class EmployeeDAO extends BaseDao {
      * Implements #HQL_GET_USER_BY_UID
      */
     public synchronized Employee getEmployeeById(Long id) throws DAOException {
-        Query query = session.createQuery(HQLRequests.HQL_GET_USER_BY_UID);
+        Query query = HibernateUtil.getCurrentSession().createQuery(HQLRequests.HQL_GET_USER_BY_UID);
         query.setParameter("id",id);
         Employee employee = (Employee) query.uniqueResult();
         return employee;
     }
 
     public synchronized List<Employee> getEmployee(String cardNum) throws DAOException {
-        Query query = session.createQuery(HQLRequests.HQL_GET_WAITER_BY_CARD);
+        Query query = HibernateUtil.getCurrentSession().createQuery(HQLRequests.HQL_GET_WAITER_BY_CARD);
         query.setParameter("cardNum", cardNum);
         List<Employee> employee = query.list();
         return employee;
     }
 
     public synchronized List<Employee> getEmployeeByLogin(String login) throws DAOException {
-        Query query = session.createQuery(HQLRequests.HQL_GET_WAITER_BY_LOGIN);
+        Query query = HibernateUtil.getCurrentSession().createQuery(HQLRequests.HQL_GET_WAITER_BY_LOGIN);
         query.setParameter("login", login);
         List<Employee> employee = query.list();
         return employee;
     }
 
     public synchronized void addEmployee(Employee employee)throws DAOException {
-        session.saveOrUpdate(employee);
+        HibernateUtil.getCurrentSession().saveOrUpdate(employee);
     }
 
     /**
