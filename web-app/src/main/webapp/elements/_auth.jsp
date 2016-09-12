@@ -45,7 +45,7 @@
 						<br /> <b><a href="action?an=logout" style="font-size: 11px"> <fmt:message
 								key="login.exit" /></b>
 						</a><br />
-						<b><a href="..pages/index.jsp" style="font-size: 11px"> <fmt:message
+						<b><a href="/index" style="font-size: 11px"> <fmt:message
 								key="login.backtomenu" /></b>
 						</a>
 					</center>

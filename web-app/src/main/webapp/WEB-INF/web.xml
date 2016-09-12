@@ -37,6 +37,10 @@
        <servlet-name>successorder-page</servlet-name>
        <jsp-file>/pages/success_base_add.jsp</jsp-file>
    </servlet>
+    <servlet>
+        <servlet-name>successempladded-page</servlet-name>
+        <jsp-file>/pages/success_employee_add.jsp</jsp-file>
+    </servlet>
    <servlet>
        <servlet-name>error-page</servlet-name>
        <jsp-file>/pages/error.jsp</jsp-file>
@@ -69,6 +73,10 @@
        <servlet-name>successorder-page</servlet-name>
        <url-pattern>/success_order</url-pattern>
    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>successempladded-page</servlet-name>
+        <url-pattern>/success_employee_added</url-pattern>
+    </servlet-mapping>
    <servlet-mapping>
        <servlet-name>view_orders-page</servlet-name>
        <url-pattern>/view_orders</url-pattern>

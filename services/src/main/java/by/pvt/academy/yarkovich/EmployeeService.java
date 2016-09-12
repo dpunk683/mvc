@@ -63,13 +63,15 @@ public class EmployeeService extends BaseService {
     public synchronized void validation(Employee employee) throws CardNumErrorException, LoginExistsErrorException {
         try {
             beginTransaction();
-            List<Employee> employeesSameCard = emplDAO_inst.getEmployee(employee.getCardNum());
-            List<Employee> employeesSameLogin = emplDAO_inst.getEmployeeByLogin(employee.getLogin());
             //Ищем пользователя с такой же картой
-            if (employeesSameCard.size() != 0) {
-                rollbackTransaction();
-                throw new CardNumErrorException();
+            if (employee.getCardNum() != "") {
+                List<Employee> employeesSameCard = emplDAO_inst.getEmployee(employee.getCardNum());
+                if (employeesSameCard.size() != 0) {
+                    rollbackTransaction();
+                    throw new CardNumErrorException();
+                }
             }
+            List<Employee> employeesSameLogin = emplDAO_inst.getEmployeeByLogin(employee.getLogin());
             //Ищем пользователя с таким логином
             if (employeesSameLogin.size() != 0) {
                 rollbackTransaction();

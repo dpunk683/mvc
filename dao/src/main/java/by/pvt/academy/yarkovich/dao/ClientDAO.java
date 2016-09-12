@@ -15,30 +15,10 @@ public class ClientDAO extends BaseDao {
 
     private static ClientDAO instance;
 
-    public void add(Client client){
-        try {
-            ClientDAO.getInstance().saveOrUpdate(client);
-        } catch (DAOException e) {
-            e.printStackTrace();
-        }
+    public void addClient(Client client){
+            HibernateUtil.getCurrentSession().saveOrUpdate(client);
     }
 
-//	public void update(Client client) throws SQLException {
-//		Connection connection = poolInstance.getConnection();
-//		String query = SQLRequests.SQL_UPDATE_CLIENT;
-//		PreparedStatement ps = null;
-//
-//		ps = connection.prepareStatement(query);
-//		ps.setString(1, client.getName());
-//		ps.setString(2, client.getDateOfBirth());
-//		ps.setString(3, client.getPhone());
-//		ps.setString(4, client.getEmail());
-//		ps.setString(5, client.getLoyalityCardNo());
-//		ps.setString(6, client.getOldLoyalityCardNo());
-//		ps.setDouble(7, client.getSpentMoney());
-//		ps.executeUpdate();
-//		poolInstance.freeConnection(connection);
-//	}
 
     public List<Client> getAll(Session session) {
         Query query = session.createQuery(HQLRequests.HQL_GET_CLIENTS);
@@ -51,6 +31,27 @@ public class ClientDAO extends BaseDao {
             instance = new ClientDAO();
         }
         return instance;
+    }
+
+    public synchronized List<Client> getClientbyCard(String cardNum) throws DAOException {
+        Query query = HibernateUtil.getCurrentSession().createQuery(HQLRequests.HQL_GET_CLIENT_BY_CARD);
+        query.setParameter("cardnum", cardNum);
+        List<Client> clients = query.list();
+        return clients;
+    }
+
+    public synchronized List<Client> getClientByEmail(String email) throws DAOException {
+        Query query = HibernateUtil.getCurrentSession().createQuery(HQLRequests.HQL_GET_CLIENT_BY_EMAIL);
+        query.setParameter("email", email);
+        List<Client> clients = query.list();
+        return clients;
+    }
+
+    public synchronized List<Client> getClientByPhone(String phone) throws DAOException {
+        Query query = HibernateUtil.getCurrentSession().createQuery(HQLRequests.HQL_GET_CLIENT_BY_PHONE);
+        query.setParameter("phone", phone);
+        List<Client> clients = query.list();
+        return clients;
     }
 
 }

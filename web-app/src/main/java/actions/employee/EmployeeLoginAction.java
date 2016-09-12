@@ -7,6 +7,7 @@ import by.pvt.academy.yarkovich.entity.Employee;
 import by.pvt.academy.yarkovich.exceptions.AuthorizationErrorException;
 import by.pvt.academy.yarkovich.logger.RestLogger;
 import by.pvt.academy.yarkovich.utils.HibernateUtil;
+import by.pvt.academy.yarkovich.utils.PassCoder;
 import constants.PageNames;
 
 import javax.servlet.http.Cookie;
@@ -44,7 +45,7 @@ public class EmployeeLoginAction extends Action {
         }
         try {
             Employee employee = EmployeeService.getInstance().checkLogin(accesslevel, request.getParameter(LOGIN),
-                    request.getParameter(PASSWORD));
+                    PassCoder.getHashCode(request.getParameter(PASSWORD)));
             //Если employee не найден, то уровень доступа гость
             if (employee == null) {
                 return null;
@@ -60,6 +61,9 @@ public class EmployeeLoginAction extends Action {
         } catch (AuthorizationErrorException e) {
             RestLogger.getInstance(this.getClass()).writeError("Exception at EmplLoginAction: " + e);
             return PageNames.ERR_PAGE;
+        }
+        finally {
+            HibernateUtil.closeSession();
         }
     }
 }

@@ -5,6 +5,8 @@ import java.util.HashMap;
 import javax.servlet.http.HttpServletRequest;
 
 import actions.Action;
+import actions.clients.AddNewClientAction;
+import actions.clients.NewClientFormAction;
 import actions.clients.ViewAllClientsAction;
 import actions.employee.NewEmployeeAddAction;
 import actions.employee.NewEmployeeFormAction;
@@ -36,6 +38,8 @@ public class ActionContainer {
 	private final String ACTION_REMOVE_FROM_ACCORDER = "removefromaccorder";
 	private final String ACTION_ADD_EMPLOYEE = "addemployee";
 	private final String ACTION_NEW_EMPLOYEE_OPEN_FORM = "newemployee";
+	private final String ACTION_NEW_CLIENT_OPEN_FORM = "newclientform";
+	private final String ACTION_ADD_CLIENT = "addclient";
 	private static ActionContainer instance;
 	private HashMap<String, Action> container;
 
@@ -55,7 +59,8 @@ public class ActionContainer {
 			container.put(ACTION_PESR_VIEW_ORDER, new EmployeeViewOrdersAction());
 			container.put(ACTION_NEW_EMPLOYEE_OPEN_FORM, new NewEmployeeFormAction());
 			container.put(ACTION_ADD_EMPLOYEE, NewEmployeeAddAction.getInstance());
-			//container.put(ACTION_ADD_EMPLOYEE, new AddNewEmployeeAction());
+			container.put(ACTION_ADD_CLIENT, new AddNewClientAction());
+			container.put(ACTION_NEW_CLIENT_OPEN_FORM, new NewClientFormAction());
 		}
 	}
 

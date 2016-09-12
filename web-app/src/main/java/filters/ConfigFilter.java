@@ -4,27 +4,20 @@
  */
 package filters;
 
-import java.io.IOException;
-import java.sql.SQLException;
-import javax.servlet.Filter;
-import javax.servlet.FilterChain;
-import javax.servlet.FilterConfig;
-import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
 import by.pvt.academy.yarkovich.EmployeeService;
 import by.pvt.academy.yarkovich.constants.AccessLevels;
 import by.pvt.academy.yarkovich.constants.AttributeNames;
-import by.pvt.academy.yarkovich.dao.EmployeeDAO;
 import by.pvt.academy.yarkovich.entity.Employee;
 import by.pvt.academy.yarkovich.logger.RestLogger;
 import by.pvt.academy.yarkovich.utils.HibernateUtil;
 import constants.PageNames;
+
+import javax.servlet.*;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import java.io.IOException;
 
 /**
  * Фильтр исполняет две задачи: кодирует параметры request объекта в UTF-8 и

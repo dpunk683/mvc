@@ -21,8 +21,6 @@ public class Client extends PersistentObject implements Serializable  {
 	@Column
 	private String loyalityCardNo;
 	@Column
-	private String oldLoyalityCardNo;
-	@Column
 	private double spentMoney;
 	@OneToMany(mappedBy = "client", cascade = CascadeType.ALL)
 	private List <AcceptedOrder> acceptedOrderSet;
@@ -68,14 +66,6 @@ public class Client extends PersistentObject implements Serializable  {
 		this.loyalityCardNo = loyalityCardNo;
 	}
 
-	public String getOldLoyalityCardNo() {
-		return oldLoyalityCardNo;
-	}
-
-	public void setOldLoyalityCardNo(String oldLoyalityCardNo) {
-		this.oldLoyalityCardNo = oldLoyalityCardNo;
-	}
-
 	public double getSpentMoney() {
 		return spentMoney;
 	}
@@ -92,7 +82,6 @@ public class Client extends PersistentObject implements Serializable  {
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
 		result = prime * result + ((loyalityCardNo == null) ? 0 : loyalityCardNo.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		result = prime * result + ((oldLoyalityCardNo == null) ? 0 : oldLoyalityCardNo.hashCode());
 		result = prime * result + ((phone == null) ? 0 : phone.hashCode());
 		long temp;
 		temp = Double.doubleToLongBits(spentMoney);
@@ -129,11 +118,6 @@ public class Client extends PersistentObject implements Serializable  {
 				return false;
 		} else if (!name.equals(other.name))
 			return false;
-		if (oldLoyalityCardNo == null) {
-			if (other.oldLoyalityCardNo != null)
-				return false;
-		} else if (!oldLoyalityCardNo.equals(other.oldLoyalityCardNo))
-			return false;
 		if (phone == null) {
 			if (other.phone != null)
 				return false;
@@ -147,19 +131,17 @@ public class Client extends PersistentObject implements Serializable  {
 	@Override
 	public String toString() {
 		return "Client [name=" + name + ", dateOfBirth=" + dateOfBirth + ", phone=" + phone + ", email="
-				+ email + ", loyalityCardNo=" + loyalityCardNo + ", oldLoyalityCardNo=" + oldLoyalityCardNo
-				+ ", spentMoney=" + spentMoney + "]";
+				+ email + ", loyalityCardNo=" + loyalityCardNo +  ", spentMoney=" + spentMoney + "]";
 	}
 
 	public Client(int id, String name, String dateOfBirth, String phone, String email, String loyalityCardNo,
-			String oldLoyalityCardNo, double spentMoney) {
+				  double spentMoney) {
 		super();
 		this.name = name;
 		this.dateOfBirth = dateOfBirth;
 		this.phone = phone;
 		this.email = email;
 		this.loyalityCardNo = loyalityCardNo;
-		this.oldLoyalityCardNo = oldLoyalityCardNo;
 		this.spentMoney = spentMoney;
 	}
 	

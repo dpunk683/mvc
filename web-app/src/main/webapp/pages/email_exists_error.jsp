@@ -12,6 +12,6 @@
     <title>Title</title>
 </head>
 <body>
-<fmt:message key="error.card_exists_error" />
+<fmt:message key="error.email_exists_error" />
 </body>
 </html>
