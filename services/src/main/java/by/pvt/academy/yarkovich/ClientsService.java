@@ -71,11 +71,10 @@ public class ClientsService {
         }
     }
 
-    public List<Client> getAll() {
-        Session session = HibernateUtil.getHibernateUtil().getCurrentSession();
-        Transaction tx = session.beginTransaction();
-        List <Client> list = ClientDAO.getInstance().getAll(session);
-        tx.commit();
-        return list;
-    }
+//    public List<Client> getAll() {
+//        beginTransaction();
+//       // List <Client> list = ClientDAO.getInstance().getAll();
+//        commitTransaction();
+//       // return list;
+//    }
 }

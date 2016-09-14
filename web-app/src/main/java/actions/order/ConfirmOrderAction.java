@@ -9,7 +9,7 @@ import by.pvt.academy.yarkovich.dao.AcceptedOrderDAO;
 import by.pvt.academy.yarkovich.entity.AcceptedOrder;
 import by.pvt.academy.yarkovich.entity.Order;
 import by.pvt.academy.yarkovich.entity.Employee;
-import by.pvt.academy.yarkovich.entity.Product;
+import by.pvt.academy.yarkovich.entity.Dish;
 import by.pvt.academy.yarkovich.entity.Receipt;
 import by.pvt.academy.yarkovich.managers.MessageManager;
 import constants.PageNames;
@@ -26,17 +26,17 @@ public class ConfirmOrderAction extends Action {
 			   if (ip == null) {  
 			   ip = request.getRemoteAddr();  
 		   }
-		List<Product> list = order.getList();
+		List<Dish> list = order.getList();
 		AcceptedOrder accepted_order = new AcceptedOrder();
 		AcceptedOrderDAO acceptedOrderDAO = AcceptedOrderDAO.getInstance();
-		for (Product product : list) {
-			accepted_order.setProductNo(product.getId());
-			if (product.getSecondPrice() != 0) {
-				accepted_order.setPrice(product.getSecondPrice());
-				order_sum+=product.getSecondPrice();
+		for (Dish dish : list) {
+			accepted_order.setProductNo(dish.getId());
+			if (dish.getSecondPrice() != 0) {
+				accepted_order.setPrice(dish.getSecondPrice());
+				order_sum+= dish.getSecondPrice();
 			} else {
-				accepted_order.setPrice(product.getPrice());
-				order_sum+=product.getPrice();
+				accepted_order.setPrice(dish.getPrice());
+				order_sum+= dish.getPrice();
 			}
 			acceptedOrderDAO.addOrder(accepted_order,ip);
 		}

@@ -5,7 +5,7 @@
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-    <%@include file="../elements/_setLocale.jsp"%>
+<%@include file="../elements/_setLocale.jsp"%>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <script src="js/clock.js"></script>
@@ -19,27 +19,20 @@
 	<table width=100%>
 		<tbody>
 			<tr>
-				<td colspan="2" valign="middle"><%@include file="../elements/_header.jsp"%>
-				</td>
+				<td colspan="2" valign="middle"><%@include
+						file="../elements/_header.jsp"%></td>
 			</tr>
 			<tr>
-			<td colspan="2" valign="middle" align="center"><h1><fmt:message key="dish.added" /></h1>
-				</td>
+				<td colspan="2" valign="middle" align="center"><h1>
+						<fmt:message key="dish.addedtobase" />
+					</h1></td>
 			</tr>
 			<tr>
-			<td>
+				<td>
 					<form action="action" method="post">
 						<input type="hidden" name="an" value="watchmenu" />
 						<button type="submit" name="submit" class="button buttonBlue">
 							<fmt:message key="menu.back" />
-						</button>
-					</form>
-				</td>
-				<td>
-					<form action="action" method="post">
-						<input type="hidden" name="an" value="getorder" />
-						<button type="submit" name="submit" class="button buttonBlue">
-							<fmt:message key="order.accept" />:${not empty sessionScope.order ? sessionScope.order.length : '0'}
 						</button>
 					</form>
 				</td>

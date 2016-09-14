@@ -11,23 +11,23 @@ public class Order implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private List<Product> list;
+	private List<Dish> list;
 	public Order() {
-        list = new LinkedList<Product>();
+        list = new LinkedList<Dish>();
     }
     
     public Integer getLength() {
         return new Integer(list.size());
     }
     
-    public void addProduct(Product product) {
-        list.add(product);
+    public void addProduct(Dish dish) {
+        list.add(dish);
     }
     
-    public void removeProduct(Product product) {
-        Long id = product.getId();
-        Product p = null;
-        for(Iterator<Product> i = list.iterator(); i.hasNext() ; ) {
+    public void removeProduct(Dish dish) {
+        Long id = dish.getId();
+        Dish p = null;
+        for(Iterator<Dish> i = list.iterator(); i.hasNext() ; ) {
             p = i.next();
             if(p.getId() == id) {
                 i.remove();
@@ -36,7 +36,7 @@ public class Order implements Serializable {
         }
     }
     
-    public List<Product> getList() {
+    public List<Dish> getList() {
         return list;
     }
     

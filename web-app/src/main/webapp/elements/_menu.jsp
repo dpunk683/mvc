@@ -81,8 +81,8 @@
 						</form>
 					</td>
 					<td>
-						<form action="addclient" method="post">
-							<input type="hidden" name="an" value="newclient" />
+						<form action="action" method="post">
+							<input type="hidden" name="an" value="newclientform" />
 							<button type="submit" name="submit" class="button buttonBlue">
 								<fmt:message key="client.add" />
 							</button>
@@ -91,7 +91,7 @@
 				</tr>
 				<tr>
 					<td>
-						<form action="addtable" method="post">
+						<form action="action" method="post">
 							<input type="hidden" name="an" value="newtable" />
 							<button type="submit" name="submit" class="button buttonBlue">
 								<fmt:message key="table.add" />
@@ -99,10 +99,10 @@
 						</form>
 					</td>
 					<td>
-						<form action="addproduct" method="post">
-							<input type="hidden" name="an" value="newproduct" />
+						<form action="action" method="post">
+							<input type="hidden" name="an" value="newdishform" />
 							<button type="submit" name="submit" class="button buttonBlue">
-								<fmt:message key="product.add" />
+								<fmt:message key="dish.add" />
 							</button>
 						</form>
 					</td>

@@ -15,7 +15,7 @@
         <mapping class="by.pvt.academy.yarkovich.entity.AcceptedOrder"/>
         <mapping class="by.pvt.academy.yarkovich.entity.Client"/>
         <mapping class="by.pvt.academy.yarkovich.entity.Employee"/>
-        <mapping class="by.pvt.academy.yarkovich.entity.Product"/>
+        <mapping class="by.pvt.academy.yarkovich.entity.Dish"/>
         <mapping class="by.pvt.academy.yarkovich.entity.TablePOS"/>
     </session-factory>
 </hibernate-configuration>

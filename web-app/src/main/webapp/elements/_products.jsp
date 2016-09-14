@@ -46,7 +46,7 @@
 												type="hidden" name="id" value="${menu.id}" />
 											<button type="submit" name="submit"
 												class="buttonfixed buttonBlue">
-												<fmt:message key="product.buybutton" />
+												<fmt:message key="dish.buybutton" />
 											</button>
 										</form></td>
 
@@ -58,7 +58,7 @@
 												type="hidden" name="id" value="${menu.id}" />
 											<button type="submit" name="submit"
 												class="buttonfixed buttonBlue">
-												<fmt:message key="product.buybutton" />
+												<fmt:message key="dish.buybutton" />
 											</button>
 										</form></td>
 								</c:otherwise>

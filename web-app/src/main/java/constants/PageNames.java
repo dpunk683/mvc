@@ -19,4 +19,7 @@ public class PageNames {
 	public static final String CLIENT_EMAIL_EXISTS_PAGE = "/email_exists_error";
 	public static final String CLIENT_PHONE_EXISTS_PAGE = "/phone_exists_error";
 	public static final String SUCCESS_CLIENT_ADDED_PAGE = "/success_client_added";
+    public static final String NEW_DISH_PAGE = "/new_dish";
+	public static final String DISH_ALREADY_EXISTS_PAGE = "/dish_already_exists";
+	public static final String SUCCESS_DISH_ADDED_PAGE = "/success_dish_added";
 }

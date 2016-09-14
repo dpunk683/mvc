@@ -33,7 +33,7 @@ public class AddNewClientAction extends Action {
         client.setName(request.getParameter("fio"));
         client.setEmail(request.getParameter("email"));
         client.setPhone(request.getParameter("phone"));
-        client.setDateOfBirth(request.getParameter("dateofbirth"));
+        client.setDateOfBirth(request.getParameter("dayofb")+"-"+request.getParameter("monthofb")+"-"+request.getParameter("yearofb"));
         client.setLoyalityCardNo(request.getParameter("cardNum"));
         client.setSpentMoney(0);
         try {

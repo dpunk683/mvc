@@ -1,18 +1,14 @@
 package actions.order;
 
-import java.sql.SQLException;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import actions.Action;
-import by.pvt.academy.yarkovich.ProductsService;
+import by.pvt.academy.yarkovich.DishService;
 import by.pvt.academy.yarkovich.constants.AttributeNames;
-import by.pvt.academy.yarkovich.dao.ProductDAO;
 import by.pvt.academy.yarkovich.entity.Order;
-import by.pvt.academy.yarkovich.entity.Product;
-import by.pvt.academy.yarkovich.managers.MessageManager;
+import by.pvt.academy.yarkovich.entity.Dish;
 import constants.PageNames;
 
 public class AddToOrderAction extends Action {
@@ -26,9 +22,9 @@ public class AddToOrderAction extends Action {
             order = new Order();
             session.setAttribute(AttributeNames.ORDER_ATTRIBUTE, order);
         }
-        Product product;
-            product = ProductsService.getInstance().getById(Long.parseLong(request.getParameter(PRODUCT_ID)));
-            order.addProduct(product);
+        Dish dish;
+            dish = DishService.getInstance().getById(Long.parseLong(request.getParameter(PRODUCT_ID)));
+            order.addProduct(dish);
         return PageNames.SUCCESS_PAGE;
     }
 

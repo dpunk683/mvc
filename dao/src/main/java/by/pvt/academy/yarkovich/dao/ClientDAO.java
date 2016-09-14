@@ -33,9 +33,9 @@ public class ClientDAO extends BaseDao {
         return instance;
     }
 
-    public synchronized List<Client> getClientbyCard(String cardNum) throws DAOException {
+    public synchronized List<Client> getClientbyCard(String loyalityCardNo) throws DAOException {
         Query query = HibernateUtil.getCurrentSession().createQuery(HQLRequests.HQL_GET_CLIENT_BY_CARD);
-        query.setParameter("cardnum", cardNum);
+        query.setParameter("loyalityCardNo", loyalityCardNo);
         List<Client> clients = query.list();
         return clients;
     }

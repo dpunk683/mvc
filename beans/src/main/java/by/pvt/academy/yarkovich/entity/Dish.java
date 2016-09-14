@@ -8,7 +8,7 @@ import java.io.Serializable;
 
 @Entity
 @Table(name = "products")
-public class Product extends PersistentObject implements Serializable {
+public class Dish extends PersistentObject implements Serializable {
 	private static final long serialVersionUID = 5L;
 	@Column
 	private String name;
@@ -75,7 +75,7 @@ public class Product extends PersistentObject implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Product other = (Product) obj;
+		Dish other = (Dish) obj;
 		if (about == null) {
 			if (other.about != null)
 				return false;
@@ -99,10 +99,10 @@ public class Product extends PersistentObject implements Serializable {
 	}
 	@Override
 	public String toString() {
-		return "Product [name=" + name + ", price=" + price + ", secondPrice=" + secondPrice + ", about="
+		return "Dish [name=" + name + ", price=" + price + ", secondPrice=" + secondPrice + ", about="
 				+ about + ", picture=" + picture + "]";
 	}
-	public Product() {
+	public Dish() {
 		// TODO Auto-generated constructor stub
 	}
 	

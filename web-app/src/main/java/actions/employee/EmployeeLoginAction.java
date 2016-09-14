@@ -45,7 +45,8 @@ public class EmployeeLoginAction extends Action {
         }
         try {
             Employee employee = EmployeeService.getInstance().checkLogin(accesslevel, request.getParameter(LOGIN),
-                    PassCoder.getHashCode(request.getParameter(PASSWORD)));
+                    request.getParameter(PASSWORD));
+                    //PassCoder.getHashCode(request.getParameter(PASSWORD)));
             //Если employee не найден, то уровень доступа гость
             if (employee == null) {
                 return null;

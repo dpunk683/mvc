@@ -17,7 +17,23 @@
         <servlet-name>new-employee-page</servlet-name>
         <jsp-file>/pages/new_employee.jsp</jsp-file>
     </servlet>
-   <servlet>
+    <servlet>
+        <servlet-name>new-dish-page</servlet-name>
+        <jsp-file>/pages/new_dish.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>dish-exists-error-page</servlet-name>
+        <jsp-file>/pages/dish_exists_error.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>success-dish-page</servlet-name>
+        <jsp-file>/pages/success_dish_add.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>new-client-page</servlet-name>
+        <jsp-file>/pages/new_client.jsp</jsp-file>
+    </servlet>
+    <servlet>
        <servlet-name>menu-page</servlet-name>
        <jsp-file>/pages/menu.jsp</jsp-file>
    </servlet>
@@ -40,6 +56,18 @@
     <servlet>
         <servlet-name>successempladded-page</servlet-name>
         <jsp-file>/pages/success_employee_add.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>email_exists_error-page</servlet-name>
+        <jsp-file>/pages/email_exists_error.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>phone_exists_error-page</servlet-name>
+        <jsp-file>/pages/phone_exists_error.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>success_client_added-page</servlet-name>
+        <jsp-file>/pages/success_client_add.jsp</jsp-file>
     </servlet>
    <servlet>
        <servlet-name>error-page</servlet-name>
@@ -66,8 +94,36 @@
        <url-pattern>/index</url-pattern>
    </servlet-mapping>
     <servlet-mapping>
+        <servlet-name>new-dish-page</servlet-name>
+        <url-pattern>/new_dish</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>dish-exists-error-page</servlet-name>
+        <url-pattern>/dish_already_exists</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>success-dish-page</servlet-name>
+        <url-pattern>/success_dish_added</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>new-employee-page</servlet-name>
         <url-pattern>/new_employee</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>email_exists_error-page</servlet-name>
+        <url-pattern>/email_exists_error</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>phone_exists_error-page</servlet-name>
+        <url-pattern>/phone_exists_error</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>success_client_added-page</servlet-name>
+        <url-pattern>/success_client_added</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>new-client-page</servlet-name>
+        <url-pattern>/new_client</url-pattern>
     </servlet-mapping>
    <servlet-mapping>
        <servlet-name>successorder-page</servlet-name>

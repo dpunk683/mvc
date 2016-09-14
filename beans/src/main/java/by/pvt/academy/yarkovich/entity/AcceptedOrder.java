@@ -23,13 +23,13 @@ public class AcceptedOrder extends PersistentObject implements Serializable {
     private Integer status;
     private String prodname;
     private int tableNum;
-    //private List<Product> list;
+    //private List<Dish> list;
     @ManyToOne
     @JoinColumn (name = "client_id")
     private Client client;
 
     public AcceptedOrder() {
-       // list = new LinkedList<Product>();
+       // list = new LinkedList<Dish>();
     }
 
     public void clear() {
