@@ -14,8 +14,8 @@ import constants.PageNames;
 
 public class ViewAllClientsAction extends Action {
     public String execute(HttpServletRequest request, HttpServletResponse response) {
-        List<Client> list = ClientsService.getInstance().getAll();
-		request.setAttribute(AttributeNames.SHOP_CLIENTS_ATTRIBUTE, list);
+        //List<Client> list = ClientsService.getInstance().getAll();
+		//request.setAttribute(AttributeNames.SHOP_CLIENTS_ATTRIBUTE, list);
 		return PageNames.CLIENTS_PAGE;
     }
 }

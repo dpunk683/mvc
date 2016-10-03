@@ -55,10 +55,10 @@ public class DishService {
             commitTransaction();
     }
 
-    public List<Dish> getNewMenu() {
+    public List<Dish> getNewMenu(int pageNumber) {
         try {
             beginTransaction();
-            List<Dish> list = dishDAO_inst.getWholeProd();
+            List<Dish> list = dishDAO_inst.getWholeProd(pageNumber);
             commitTransaction();
             return list;
         } catch (HibernateException e) {

@@ -29,19 +29,11 @@ public class AddNewDishAction extends Action{
         return instance;
     }
 
-    public synchronized String execute(HttpServletRequest request, HttpServletResponse response) {
+    public synchronized String execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         // Create path components to save the file
         final String path = "images/dishes";
-        Part filePart = null;
-        try {
-            filePart = request.getPart("file");
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ServletException e) {
-            e.printStackTrace();
-        }
-        final String fileName = getFileName(filePart);
-
+            Part filePart = request.getPart("file");
+            String fileName = getFileName(filePart);
         OutputStream out = null;
         InputStream filecontent = null;
         PrintWriter writer = null;

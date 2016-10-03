@@ -1,11 +1,13 @@
 package actions;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import by.pvt.academy.yarkovich.managers.ErrorManager;
 import by.pvt.academy.yarkovich.managers.MessageManager;
 
+import java.io.IOException;
 
 
 public abstract class Action {
@@ -19,5 +21,5 @@ public abstract class Action {
     }
     
     public abstract String execute(HttpServletRequest request,
-            HttpServletResponse response);
+            HttpServletResponse response) throws IOException, ServletException;
 }

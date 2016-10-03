@@ -5,6 +5,7 @@ import by.pvt.academy.yarkovich.entity.Dish;
 import by.pvt.academy.yarkovich.entity.Employee;
 import by.pvt.academy.yarkovich.exceptions.DAOException;
 import by.pvt.academy.yarkovich.utils.HibernateUtil;
+import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
@@ -13,6 +14,7 @@ import java.util.List;
 
 public class DishDAO extends BaseDao {
     private static DishDAO instance;
+    private static int pageSize = 3;
 
     private DishDAO() {
         super();
@@ -35,9 +37,12 @@ public class DishDAO extends BaseDao {
         return dishes;
     }
 
-    public synchronized List<Dish> getWholeProd() {
-        Query query = HibernateUtil.getCurrentSession().createQuery(HQLRequests.HQL_GET_MENU);
-        List<Dish> dishes = query.list();
+    public synchronized List<Dish> getWholeProd(int pageNumber) {
+
+        Criteria criteria = HibernateUtil.getCurrentSession().createCriteria(Dish.class);
+        criteria.setFirstResult(pageSize * (pageNumber - 1));
+        criteria.setMaxResults(pageSize);
+        List<Dish> dishes = criteria.list();
         return dishes;
     }
 

@@ -38,7 +38,7 @@
             </div>
         </td>
         <td>
-            <FORM METHOD="POST" NAME="FORM1" ACTION="action" TITLE="Dish" enctype="multipart/form-data">
+            <FORM METHOD="POST" NAME="FORM1" ACTION="action" enctype="multipart/form­data" TITLE="Dish">
                 <FIELDSET>
                     <LEGEND>Введите данные для нового блюда:</LEGEND>
                     <INPUT TYPE="TEXT" id="name" NAME="name" MAXLENGTH="25" size="25" placeholder="Название блюда" autofocus required>
@@ -52,12 +52,11 @@
                            placeholder="Second price" >
                     </br>
                     <span>Dish image:</span></br>
-                    <input type="file" name="file" id="file"/></br>
-                    <LEGEND></LEGEND>
-                    <input type="hidden" name="an" value="adddish"/>
-                    <input type="submit" name="butt1" id="butt1" value=<fmt:message key="waiter.add" />>
+                    <input type="hidden" name="an" value="adddish">
+                    <input type="file" name="file" id="file"></br>
+                    <input type="submit" name="butt1" id="butt1" value=<fmt:message key="waiter.add"/> >
                     <input type="reset" name="butt2" id="butt2" value="Сбросить"><br/>
-                </fieldset>
+                </FIELDSET>
             </FORM>
         </td>
     </tr>

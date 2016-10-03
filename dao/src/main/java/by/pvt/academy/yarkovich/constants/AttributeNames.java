@@ -18,4 +18,5 @@ public class AttributeNames {
 	public static final String ORDER_ATTRIBUTE = "order";
 	public static final String ACC_ORDERS_ATTRIBUTE = "acc_orders";
 	public static final String RECEIPT_ATTRIBUTE = "receipt";
+    public static final String PAGE ="page" ;
 }

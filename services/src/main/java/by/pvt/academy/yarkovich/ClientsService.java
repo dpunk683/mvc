@@ -10,7 +10,9 @@ import by.pvt.academy.yarkovich.logger.RestLogger;
 import by.pvt.academy.yarkovich.utils.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 import static by.pvt.academy.yarkovich.utils.HibernateUtil.beginTransaction;
@@ -20,6 +22,8 @@ import static by.pvt.academy.yarkovich.utils.HibernateUtil.rollbackTransaction;
 /**
  * Created by dima on 03.09.2016.
  */
+@Service
+@Transactional
 public class ClientsService {
     private static ClientsService instance;
     private ClientDAO clientDAO_inst = ClientDAO.getInstance();
